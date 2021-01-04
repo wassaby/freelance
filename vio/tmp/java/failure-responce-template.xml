@@ -1,0 +1,4 @@
+<response order_id="@order_id@">
+	<error type="@type@" time="@time@" code="@code@">@error-message@</error>
+	<session id="@session_id@" />
+</response>

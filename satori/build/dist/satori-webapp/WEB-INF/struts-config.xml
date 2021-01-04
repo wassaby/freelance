@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+	<form-beans>
+	    <!-- Web part -->
+	    <!-- Manager -->
+	    <form-bean name="login-form" type="com.daurenzg.satori.webapp.login.LoginForm" />
+	    <form-bean name="item-list-form" type="com.daurenzg.satori.webapp.manager.GetItemsListForm" />
+	    <form-bean name="add-new-item-form" type="com.daurenzg.satori.webapp.manager.AddNewItemForm"/>
+        <form-bean name="go-edit-item-form" type="com.daurenzg.satori.webapp.manager.EditItemForwardForm"/> 
+	    <form-bean name="go-edit-day-form" type="com.daurenzg.satori.webapp.manager.EditDayForwardForm"/>
+	   	<form-bean name="new-pushup-form" type="com.daurenzg.satori.webapp.manager.NewPushUpForwardForm"/>
+	   	<form-bean name="add-new-push-form" type="com.daurenzg.satori.webapp.manager.NewPushUpAddForm"/>
+	   	<form-bean name="go-add-article-form" type="com.daurenzg.satori.webapp.manager.NewArticleForwardForm"/>
+	   	<form-bean name="add-new-article-form" type="com.daurenzg.satori.webapp.manager.AddNewArticleForm"/>
+	   	<form-bean name="change-article-image-form" type="com.daurenzg.satori.webapp.manager.ChangeImageForm"/>
+	   	<form-bean name="go-edit-article-form" type="com.daurenzg.satori.webapp.manager.EditArticleForwardForm"/>
+	   	<form-bean name="edit-article-form" type="com.daurenzg.satori.webapp.manager.EditArticleForm"/>
+		<form-bean name="go-edit-pushup-form" type="com.daurenzg.satori.webapp.manager.EditPushUpForwardForm"/>
+		<form-bean name="edit-pushup-form" type="com.daurenzg.satori.webapp.manager.EditPushUpForm"/>
+		<form-bean name="edit-item-property-form" type="com.daurenzg.satori.webapp.manager.EditItemPropertyForm"/>
+		<form-bean name="go-add-item-language-form" type="com.daurenzg.satori.webapp.manager.AddItemNewLanguageForwardForm"/>
+		<form-bean name="item-new-language-form" type="com.daurenzg.satori.webapp.manager.AddItemNewLanguageForm"/>
+	   	<form-bean name="delete-image-form" type="com.daurenzg.satori.webapp.manager.DeleteImageForm"/>
+		<form-bean name="delete-article-form" type="com.daurenzg.satori.webapp.manager.DeleteArticleForm"/>
+		<form-bean name="delete-pushup-form" type="com.daurenzg.satori.webapp.manager.DeletePushUpForm"/>
+		<form-bean name="go-move-item-trash-form" type="com.daurenzg.satori.webapp.manager.MoveItemToTrashForwardForm"/>
+		<form-bean name="move-item-trash-form" type="com.daurenzg.satori.webapp.manager.MoveItemToTrashForm"/>
+		
+		<!-- Admin -->
+		<form-bean name="go-edit-lang-form" type="com.daurenzg.satori.webapp.admin.GoEditLangForm"/>
+		<form-bean name="edit-lang-form" type="com.daurenzg.satori.webapp.admin.EditLangForm"/>
+		<form-bean name="new-lang-form" type="com.daurenzg.satori.webapp.admin.NewLangForm"/>
+		<form-bean name="delete-lang-form" type="com.daurenzg.satori.webapp.admin.DeleteLangForm"/>
+		<form-bean name="edit-pswd-form" type="com.daurenzg.satori.webapp.admin.ChangePswdForm"/>
+		
+	   	<!-- Common part -->
+	   	<form-bean name="get-image-form" type="com.daurenzg.satori.webapp.common.GetImageForm" />
+	   	<form-bean name="view-photo-form" type="com.daurenzg.satori.webapp.common.ViewPhotoForm" />
+	   	
+	   	<!-- Mobile part -->
+	    <form-bean name="get-item-list-form" type="com.daurenzg.satori.webapp.mobile.GetItemListForm"/>
+	    <form-bean name="get-items-form" type="com.daurenzg.satori.webapp.mobile.GetItemsForm"/>
+	    
+	</form-beans>
+
+	<global-exceptions />
+
+	<global-forwards>
+		<!-- <forward name="error" path="error" redirect="false" />-->
+		<forward name="permission-denied-error" path="permission-denied-error" redirect="false" />
+		<forward name="not-authorized-mobile-request-error" path="/jsp/mobile/error/not-authorized-error.jsp" redirect="false" />
+	</global-forwards>
+
+	<action-mappings>
+	    
+        <!-- Common parts -->
+
+	    <action path="/authorize" forward="/login-page.html"/>
+	    
+	    <action path="/login-page" type="com.teremok.struts.helper.ForwardAction" validate="false">
+			<forward name="success" path="login-page" contextRelative="true" />
+		</action>
+		
+	    <action path="/login" name="login-form" input="login-page" type="com.daurenzg.satori.webapp.login.LoginAction" validate="true">
+			<forward name="admin" path="/admin-main-page.html" contextRelative="true" />
+			<forward name="manager" path="/item-list.html?item=all" contextRelative="true" />
+			<forward name="error" path="/login-page.html" contextRelative="true" />
+		</action>
+		
+		<action path="/logout" type="com.daurenzg.satori.webapp.login.LogoutAction" validate="false">
+			<forward name="success" path="/login-page.html" contextRelative="true"/>
+		</action>
+		
+	    <action path="/view-file" type="com.rs.vio.webapp.webform.ViewFileAction" name="view-file-form" scope="request" validate="false"/>
+
+	    <action path="/get-image" name="get-image-form" scope="request" type="com.daurenzg.satori.webapp.common.GetImageAction"  />
+	    <!--  <action path="/get-sized-image" name="get-sized-image-form" scope="request" type="com.rs.vio.webapp.webform.GetSizedImageAction"  />-->
+		
+		
+		
+		
+	    <!-- Users part -->
+		
+		<action path="/get-user-id" type="com.daurenzg.satori.webapp.mobile.GetUserIdAction" validate="false">
+		    <forward name="success" path="/jsp/mobile/user-created.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/get-item-list" name="get-item-list-form" type="com.daurenzg.satori.webapp.mobile.GetItemListAction" validate="false">
+		    <forward name="success" path="/jsp/mobile/item-list.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/get-items" name="get-items-form" type="com.daurenzg.satori.webapp.mobile.GetItemsAction" validate="false">
+		    <forward name="success" path="/jsp/mobile/items.jsp" contextRelative="true" />
+		</action>
+	    
+		
+		
+	    <!-- Admin part -->
+	    
+	    <action path="/admin-main-page" type="com.daurenzg.satori.webapp.admin.GetInfoAction" validate="false">
+		    <forward name="success" path="admin-start-page" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-edit-pswd" type="com.daurenzg.satori.webapp.admin.ChangePswdForwardAction" validate="false">
+		    <forward name="success" path="edit-pswd" contextRelative="true" />
+		</action>
+		
+	    <action path="/edit-pswd" name="edit-pswd-form" type="com.daurenzg.satori.webapp.admin.ChangePswdAction" validate="false">
+		    <forward name="success" path="/go-edit-pswd.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-edit-lang" name="go-edit-lang-form" type="com.daurenzg.satori.webapp.admin.GoEditLangAction" validate="false">
+		    <forward name="success" path="edit-lang" contextRelative="true" />
+		</action>
+		
+	    <action path="/edit-lang" name="edit-lang-form" type="com.daurenzg.satori.webapp.admin.EditLangAction" validate="false">
+		    <forward name="success" path="/admin-main-page.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-new-lang" type="com.daurenzg.satori.webapp.admin.AdminForwardAction" validate="false">
+		    <forward name="success" path="new-lang" contextRelative="true" />
+		</action>
+		
+	    <action path="/new-lang" name="new-lang-form" type="com.daurenzg.satori.webapp.admin.NewLangAction" validate="false">
+		    <forward name="success" path="/admin-main-page.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-delete-lang" type="com.daurenzg.satori.webapp.admin.GoDeleteLangAction" validate="false">
+		    <forward name="success" path="delete-lang" contextRelative="true" />
+		</action>
+		
+	    <action path="/delete-lang" name="delete-lang-form" type="com.daurenzg.satori.webapp.admin.DeleteLangAction" validate="false">
+		    <forward name="success" path="/admin-main-page.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-edit-status" name="go-edit-status-form" type="com.daurenzg.satori.webapp.admin.GoEditStatusAction" validate="false">
+		    <forward name="success" path="edit-lang" contextRelative="true" />
+		</action>
+		
+	    <action path="/edit-status" name="edit-status-form" type="com.daurenzg.satori.webapp.admin.EditStatusAction" validate="false">
+		    <forward name="success" path="edit-lang" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-edit-lang" name="go-edit-lang-form" type="com.daurenzg.satori.webapp.admin.GoEditLangAction" validate="false">
+		    <forward name="success" path="edit-lang" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-edit-lang" name="go-edit-lang-form" type="com.daurenzg.satori.webapp.admin.GoEditLangAction" validate="false">
+		    <forward name="success" path="edit-lang" contextRelative="true" />
+		</action>
+	    
+	    
+	    <!-- Manager part -->
+	    <action path="/manager-main-page" type="com.daurenzg.satori.webapp.manager.GetItemsListAction" validate="false">
+		    <forward name="success" path="manager-start-page" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-move-item-trash" name="go-move-item-trash-form" type="com.daurenzg.satori.webapp.manager.MoveItemToTrashForwardAction" validate="false">
+		    <forward name="success" path="item-trash" contextRelative="true" />
+		</action>
+		
+	    <action path="/move-item-trash" name="move-item-trash-form" type="com.daurenzg.satori.webapp.manager.MoveItemToTrashAction" validate="false">
+		    <forward name="success" path="/item-list.html?item=archiv" contextRelative="true" />
+		</action>
+	    
+	    <action path="/new-item" type="com.daurenzg.satori.webapp.manager.NewItemForwardAction" validate="false">
+		    <forward name="success" path="new-item" contextRelative="true" />
+		</action>
+		
+	    <action path="/add-new-item" name="add-new-item-form" input="new-item" type="com.daurenzg.satori.webapp.manager.AddNewItemAction" validate="true">
+		    <forward name="success" path="/item-list.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/item-list" name="item-list-form" type="com.daurenzg.satori.webapp.manager.GetItemsListAction" scope="request" validate="false">
+		    <forward name="success" path="item-list" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-edit-item-property" type="com.daurenzg.satori.webapp.manager.EditItemPropertyForwardAction" validate="false">
+		    <forward name="success" path="edit-item-property" contextRelative="true" />
+		</action>
+		
+	    <action path="/edit-item-property" name="edit-item-property-form" type="com.daurenzg.satori.webapp.manager.EditItemPropertyAction" validate="false">
+		    <forward name="success" path="/go-edit-item.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-edit-item" name="go-edit-item-form" type="com.daurenzg.satori.webapp.manager.EditItemForwardAction" validate="false">
+		    <forward name="success" path="edit-item" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-edit-day" name="go-edit-day-form" type="com.daurenzg.satori.webapp.manager.EditDayForwardAction" validate="false">
+		    <forward name="success" path="edit-day-notifications" contextRelative="true" />
+		</action>
+		
+	    <action path="/new-pushup" name="new-pushup-form" type="com.daurenzg.satori.webapp.manager.NewPushUpForwardAction" validate="false">
+		    <forward name="success" path="new-pushup" contextRelative="true" />
+		</action>
+		
+	    <action path="/add-new-push" name="add-new-push-form" type="com.daurenzg.satori.webapp.manager.NewPushUpAddAction" validate="false">
+		    <forward name="success" path="/go-edit-day.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-add-article" name="go-add-article-form" type="com.daurenzg.satori.webapp.manager.NewArticleForwardAction" validate="false">
+		    <forward name="success" path="new-article" contextRelative="true" />
+		</action>
+		
+	    <action path="/add-new-article" name="add-new-article-form" input="new-article" type="com.daurenzg.satori.webapp.manager.AddNewArticleAction" validate="false">
+		    <forward name="success" path="/go-edit-day.html" contextRelative="true" />
+		</action>
+	    
+	    <action path="/go-change-article-image" type="com.daurenzg.satori.webapp.manager.ChangeArticleImageForwardAction" validate="false">
+		    <forward name="success" path="change-article-image" contextRelative="true" />
+		</action>
+		
+	    <action path="/change-article-image" name="change-article-image-form" input="change-article-image" type="com.daurenzg.satori.webapp.manager.ChangeImageAction" validate="false">
+		    <forward name="success" path="/go-edit-day.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-edit-article" name="go-edit-article-form" type="com.daurenzg.satori.webapp.manager.EditArticleForwardAction" validate="false">
+		    <forward name="success" path="edit-article" contextRelative="true" />
+		</action>
+		
+	    <action path="/edit-article" name="edit-article-form" type="com.daurenzg.satori.webapp.manager.EditArticleAction" validate="false">
+		    <forward name="success" path="/go-edit-day.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-edit-pushup" name="go-edit-pushup-form" type="com.daurenzg.satori.webapp.manager.EditPushUpForwardAction" validate="false">
+		    <forward name="success" path="edit-pushup" contextRelative="true" />
+		</action>
+		
+	    <action path="/edit-pushup" name="edit-pushup-form" type="com.daurenzg.satori.webapp.manager.EditPushUpAction" validate="false">
+		    <forward name="success" path="/go-edit-day.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-add-item-language" name="go-add-item-language-form" type="com.daurenzg.satori.webapp.manager.AddItemNewLanguageForwardAction" validate="false">
+		    <forward name="success" path="item-new-language" contextRelative="true" />
+		</action>
+		
+	    <action path="/new-language-item" name="item-new-language-form" type="com.daurenzg.satori.webapp.manager.AddItemNewLanguageAction" validate="false">
+		    <forward name="success" path="/go-edit-item.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-delete-article-image" type="com.daurenzg.satori.webapp.manager.DeleteImageForwardAction" validate="false">
+		    <forward name="success" path="delete-image" contextRelative="true" />
+		</action>
+		
+	    <action path="/delete-image" name="delete-image-form" type="com.daurenzg.satori.webapp.manager.DeleteImageAction" validate="false">
+		    <forward name="success" path="/go-edit-day.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-delete-article" type="com.daurenzg.satori.webapp.manager.DeleteArticleForwardAction" validate="false">
+		    <forward name="success" path="delete-article" contextRelative="true" />
+		</action>
+		
+	    <action path="/delete-article" name="delete-article-form" type="com.daurenzg.satori.webapp.manager.DeleteArticleAction" validate="false">
+		    <forward name="success" path="/go-edit-day.html" contextRelative="true" />
+		</action>
+		
+	    <action path="/go-delete-pushup" type="com.daurenzg.satori.webapp.manager.DeletePushUpForwardAction" validate="false">
+		    <forward name="success" path="delete-pushup" contextRelative="true" />
+		</action>
+	    
+	    <action path="/delete-pushup" name="delete-pushup-form" type="com.daurenzg.satori.webapp.manager.DeletePushUpAction" validate="false">
+		    <forward name="success" path="/go-edit-day.html" contextRelative="true" />
+		</action>
+		
+	</action-mappings>
+
+	<message-resources parameter="ApplicationResources" />
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config"
+			value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="definitions-debug" value="2" />
+		<set-property property="definitions-parser-details" value="2" />
+		<set-property property="definitions-parser-validate"
+			value="true" />
+	</plug-in>
+
+</struts-config>

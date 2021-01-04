@@ -1,0 +1,39 @@
+/BeanComponentManager.java/1.2/Fri Apr 15 10:37:37 2016//
+/BillingJWSException.java/1.2/Fri Apr 15 10:37:37 2016//
+/CommonsBeansConstants.java/1.2/Fri Apr 15 10:37:37 2016//
+/CommonsBeansException.java/1.1/Tue Jul  1 11:58:26 2014//T1.1
+/ComponentFactoryImpl.java/1.2/Fri Apr 15 10:37:37 2016//
+/HibernateManager.java/1.2/Fri Apr 15 10:37:37 2016//
+/IComponentFactory.java/1.2/Fri Apr 15 10:37:37 2016//
+D/abonent////
+D/account////
+D/anketa////
+D/apps////
+D/autopayment////
+D/bpel////
+D/calendar////
+D/connections////
+D/control////
+D/dealer////
+D/epay////
+D/httpclient////
+D/inventory////
+D/isalive////
+D/keystore////
+D/limit////
+D/login////
+D/mail////
+D/outqueue////
+D/payment////
+D/persist////
+D/poihelper////
+D/registration////
+D/report////
+D/request////
+D/security////
+D/state////
+D/statistics////
+D/trplan////
+D/urlresolver////
+D/util////
+D/xml////

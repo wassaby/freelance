@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/create_tournament_players_count_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="top" >
+
+    <ImageView
+        android:id="@+id/tournamentProfileInviteUsrImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_alignRight="@+id/tournamentProfileAddUsrImageView"
+        android:layout_below="@+id/tournamentProfileAddUsrImageView"
+        android:src="@drawable/invite_usr" />
+
+    <TextView
+        android:id="@+id/tournamentProfileInviteUsrTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tournamentProfileInviteUsrImageView"
+        android:layout_alignLeft="@+id/tournamentProfileAddUsrTextView"
+        android:layout_marginBottom="20dp"
+        android:paddingLeft="20dp"
+        android:text="@string/inviteFriendString"
+        android:textColor="#cfcfcf" />
+
+    <TextView
+        android:id="@+id/tournamentProfileAddUsrTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tournamentProfileAddUsrImageView"
+        android:layout_marginBottom="17dp"
+        android:layout_toRightOf="@+id/tournamentProfileAddUsrImageView"
+        android:paddingLeft="20dp"
+        android:text="@string/addPlayerString"
+        android:textColor="#cfcfcf" />
+
+    <ImageView
+        android:id="@+id/tournamentProfileAddUsrImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/add_usr1" />
+
+</RelativeLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/tournamentslistView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true" >
+
+    </ListView>
+    
+    <com.daurenzg.betstars.btn.AddFloatingActionButton
+        android:id="@+id/createTournamentBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        fab:fab_colorNormal="#ffbb00"
+        fab:fab_colorPressed="@color/white"
+        fab:fab_plusIconColor="@color/white" />
+    
+</RelativeLayout>

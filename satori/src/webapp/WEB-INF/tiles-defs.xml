@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+	    
+    <definition name="login-page" path="/jsp/login/login.jsp"/>
+    <definition name="error" path="/jsp/common/error.jsp"/>
+    
+    
+    <!-- Base layout -->
+    
+    <definition name="authorized-layout" path="/layouts/authorized-layout.jsp">
+		<put name="header" value="/layouts/base/header.jsp"/>
+		<put name="menu" value=""/>
+        <put name="body" value=""/>
+    </definition>
+    
+   
+    <!-- Admin pages -->
+    
+    <definition name="admin-start-page" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-admin.jsp"/>
+        <put name="body" value="/jsp/admin/main.jsp"/>
+    </definition>
+    
+    <definition name="edit-pswd" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-admin.jsp"/>
+        <put name="body" value="/jsp/admin/edit-pswd.jsp"/>
+    </definition>
+    
+    <definition name="edit-lang" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-admin.jsp"/>
+        <put name="body" value="/jsp/admin/edit-lang.jsp"/>
+    </definition>
+    
+    <definition name="new-lang" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-admin.jsp"/>
+        <put name="body" value="/jsp/admin/new-lang.jsp"/>
+    </definition>
+    
+    <definition name="delete-lang" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-admin.jsp"/>
+        <put name="body" value="/jsp/admin/delete-lang.jsp"/>
+    </definition>
+    
+
+    <!-- Content-manager pages -->
+    
+    <definition name="manager-start-page" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/main.jsp"/>
+    </definition>
+    
+    <definition name="new-item" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/new-item.jsp"/>
+    </definition>
+    
+    <definition name="item-list" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/item-list.jsp"/>
+    </definition>
+    
+    <definition name="edit-item" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/edit-item.jsp"/>
+    </definition>
+    
+    <definition name="edit-item-property" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/edit-item-property.jsp"/>
+    </definition>
+    
+    <definition name="edit-day-notifications" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/edit-day-item.jsp"/>
+    </definition>
+    
+    <definition name="new-pushup" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/new-pushup.jsp"/>
+    </definition>
+    
+    <definition name="new-article" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/new-article.jsp"/>
+    </definition>
+    
+    <definition name="change-article-image" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/change-article-image.jsp"/>
+    </definition>
+    
+    <definition name="edit-article" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/edit-article.jsp"/>
+    </definition>
+    
+    <definition name="edit-pushup" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/edit-pushup.jsp"/>
+    </definition>
+    
+    <definition name="item-new-language" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/item-new-language.jsp"/>
+    </definition>
+    
+    <definition name="delete-image" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/delete-image.jsp"/>
+    </definition>
+    
+    <definition name="delete-article" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/delete-article.jsp"/>
+    </definition>
+    
+    <definition name="delete-pushup" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/delete-pushup.jsp"/>
+    </definition>
+    
+    <definition name="item-trash" extends="authorized-layout">
+        <put name="menu" value="/layouts/base/menu-manager.jsp"/>
+        <put name="body" value="/jsp/manager/item-trash.jsp"/>
+    </definition>
+    
+</tiles-definitions>

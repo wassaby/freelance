@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!-- $Id: log4j.xml,v 1.2 2016/04/15 10:37:28 dauren_home Exp $ -->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd-MM-yyyy HH:mm:ss,SSS} %-5p [%c{1}(%M)] : %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="TEMP" class="com.teremok.utils.log4j.DateFileAppender">
+       <param name="File" value="E:/var/log/vio/%d{yyyy-MM-dd}/vio.log" />
+       <param name="MaxFileSize" value="1024KB" />
+       <param name="MaxBackupIndex" value="10"/>
+       <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd-MM-yyyy HH:mm:ss,SSS} %-5p [%c{1}(%M)] : %m%n" />
+       </layout>
+    </appender>
+
+    <appender name="TEMP-SCHEDULER" class="org.apache.log4j.RollingFileAppender">
+       <param name="File" value="E:/var/log/vio/scheduler.log" />
+       <param name="MaxFileSize" value="1024KB" />
+       <param name="MaxBackupIndex" value="10"/>
+       <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd-MM-yyyy HH:mm:ss,SSS} %-5p [%c{1}(%M)] : %m%n" />
+       </layout>
+    </appender>
+
+    <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="TEMP"/>
+        <appender-ref ref="CONSOLE"/>
+    </appender>
+
+    <category name="com.realsoft.utils.scheduler" additivity="false">
+        <priority value="info"/>
+        <appender-ref ref="TEMP-SCHEDULER"/>
+    </category>	
+
+    <category name="com.teremok" additivity="false">
+		<priority value="debug"/>
+        <appender-ref ref="ASYNC"/>
+	</category>
+	
+    <category name="org.apache">
+		<priority value="info"/>
+        <appender-ref ref="ASYNC"/>
+	</category>
+	
+    <category name="org.springframework">
+		<priority value="info"/>
+        <appender-ref ref="ASYNC"/>
+	</category>	
+	
+    <category name="org.aopalliance">
+		<priority value="info"/>
+        <appender-ref ref="ASYNC"/>
+	</category>	
+	
+</log4j:configuration>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/id_nickname"
+        android:layout_width="match_parent"
+        android:hint="@string/hintIdNickname"
+        android:layout_height="wrap_content" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/transferAmount"
+        android:layout_width="match_parent"
+        android:hint="@string/hintAmount"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/welcome_page"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/back" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:text="@string/send"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/welcome_page" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,91 @@
+﻿CREATE TABLE `account_type` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into account_type(name) values('Администратор системы');
+insert into account_type(name) values('Пользователь системы');
+
+
+CREATE TABLE `account_usr` (
+  `id` int(11) NOT NULL auto_increment,
+  `login` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `account_type_id` int(3) NOT NULL,
+  `fname` varchar(100),
+  `lname` varchar(100),
+  `ip_address` varchar(100) NOT NULL,
+  `phone_identifier` varchar(100) NOT NULL,
+  `sys_date` timestamp NOT NULL  default CURRENT_TIMESTAMP,
+  `last_login` timestamp,
+  `is_blocked` int(1) NOT NULL default 0,
+  PRIMARY KEY  (`id`),
+  KEY `account_type_id` (`account_type_id`),
+  CONSTRAINT `fk_account_type_id` FOREIGN KEY (`account_type_id`) REFERENCES `account_type` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into account_usr(login, password, fname, lname, phone_identifier, ip_address, account_type_id, last_login) values('Admin', 'c21hbmFnZXI=', 'Администратор', 'Системы', '+77773865312', '127.0.0.1', 1, CURRENT_TIMESTAMP);
+
+create TABLE `file` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(500) NOT NULL,
+  `size` int(11) NOT NULL,
+  `data` longblob NOT NULL,
+  `content_type` varchar(200) NOT NULL,
+  `longitude` varchar(255),
+  `latitude` varchar(255),
+  `authorization_required` int(11) NOT NULL default '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `report_type` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into report_type(name) values('Нарушения');
+
+create table `report_status` (
+	`id` int(11) not null auto_increment,
+	`name` varchar(255),
+	primary key (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into report_status(name) values('Не просмотрено');
+insert into report_status(name) values('Просмотрено');
+insert into report_status(name) values('В процессе');
+insert into report_status(name) values('Исправлено');
+
+CREATE TABLE `report` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `report_type_id` int(11) NOT NULL DEFAULT 1,
+  `report_status_id` int(11) NOT NULL DEFAULT 1,
+  `header` varchar(255),
+  `comment` varchar(4096),
+  `sys_date` timestamp NOT NULL  default CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `report_type_id` (`report_type_id`),
+  KEY `report_status_id` (`report_status_id`),
+  CONSTRAINT `fk_user_id_id` FOREIGN KEY (`user_id`) REFERENCES `account_usr` (`id`),
+  CONSTRAINT `fk_report_type_id` FOREIGN KEY (`report_type_id`) REFERENCES `report_type` (`id`),
+  CONSTRAINT `fk_report_status_id` FOREIGN KEY (`report_status_id`) REFERENCES `report_status` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+create table `report_file` (
+	`id` int(11) not null auto_increment,
+	`file_id` int(11) not null,
+	`report_id` int(11) not null,
+	`sys_date` timestamp NOT NULL  default CURRENT_TIMESTAMP,
+	primary key (`id`),
+	key `file_id` (`file_id`),
+	key `report_id` (`report_id`),
+	CONSTRAINT `fk__file_id` FOREIGN KEY (`file_id`) REFERENCES `file` (`id`),
+  CONSTRAINT `fk__report_id` FOREIGN KEY (`report_id`) REFERENCES `report` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ 
+commit;

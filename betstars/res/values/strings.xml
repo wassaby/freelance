@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bet Stars</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="title_activity_sign_in">Sign In</string>
+    <string name="title_activity_sign_up">Sign Up</string>
+    <string name="title_profile_settings">Profile Settings</string>
+    <string name="title_activity_restore_password">Restore password</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_pswd">FORGOT PASSWORD</string>
+    <string name="title_activity_sign_up_activity1">Sign Up</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="login_fb">LOGIN WITH FACEBOOK</string>
+    <string name="enter_email">Enter your email</string>
+    <string name="waitDlgTitle">Please wait</string>
+    <string name="waitDlgMessage">Please wait...</string>
+    <string name="loadTournamentDlgMessage">Loading tournaments</string>
+    <string name="loadSportDlgMessage">Loading sports</string>
+    <string name="loadGamesDlgMessage">Loading games</string>
+    <string name="loadChampionatShipListDlgMessage">Loading championatship</string>
+    <string name="faq_answers">FAQ</string>
+    <string name="faq_rules">RULES</string>
+    <string name="tournamentRoundCount">Rounds:</string>
+    <string name="tournamentPlayersCount">Players count:</string>
+    <string name="tournamentStartDate">Start:</string>
+    <string name="tournamentMinimalBet">Minimal bet:</string>
+    <string name="transfer">TRANSFER</string>
+    <string name="searchAccountHint">Enter name or Id</string>
+    <string name="searchAccountAlreadyAddedMessage">Already added</string>
+    <string name="noProfileFoundTextView">No profiles found</string>
+    <string name="notAllUsersJoinedMessage">Not all users joined yet</string>
+    <string name="title_activity_search_account">AccountSearch</string>
+    <string name="back">BACK</string>
+    <string name="send">SEND</string>
+    <string name="hintIdNickname">ID / Nickname</string>
+    <string name="hintAmount">Amount</string>
+    <string name="settings_push">Push notifications</string>
+    <string name="settings_change_pswd">Change password</string>
+    <string name="settings_sign_out">Sign out</string>
+
+    <string-array name="tab_titles">
+        <item>FAQ</item>
+        <item>RULES</item>
+    </string-array>
+    <string-array name="tournament_tab_titles">
+        <item>CURRENT</item>
+        <item>SEARCH</item>
+    </string-array>
+    <string-array name="stats_tab_titles">
+        <item>STATS</item>
+        <item>RATING</item>
+    </string-array>
+
+    <!-- Facebook ID -->
+    <string name="fb_ID">163192440683195</string>
+    <string name="searchTournamentPlayersCountMessage">Please select number of players</string>
+    <string name="searchTournamentTermMessage">Select term of tournaments</string>
+    <string name="searchTournamentAnteMessage">Select ante</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item>My Profile</item>
+        <item>News</item>
+        <item>Tournaments</item>
+        <item>Stats &amp; Ratings</item>
+        <item>Balance</item>
+        <item>FAQ &amp; Rules</item>
+    </string-array>
+    <string-array name="faq_rules">
+        <item>Турниры</item>
+        <item>Ставки</item>
+        <item>Ставки с форой</item>
+    </string-array>
+
+    <!--
+    <string name="_faq_rules_tournaments_header1">Турниры</string>
+	<string name="_faq_rules_tournaments_body1">Игрок одновременно может участвовать в нескольких турнирах.</string>
+	<string name="_faq_rules_tournaments_body2">Игроки могут самостоятельно формировать турниры, приглашая в них друзей.</string>
+	<string name="_faq_rules_tournaments_body3">Для того чтобы участвовать в официальных турнирах игроку необходимо иметь в наличии внутреннюю игровую валюту — BC (Bet Coin).</string>
+	<string name="_faq_rules_tournaments_body4">Официальный турнир состоит из 3,7 или 10 туров. Участвуют от 6 или 9 игроков.</string>
+	<string name="_faq_rules_tournaments_body5">Турниры имеют разный вступительный взнос: 100 BC, 500 BC, 1000 BC.</string>
+	<string name="_faq_rules_tournaments_body6">В турнире побеждает игрок, набравший больше всех баллов по итогам турнира.</string>
+	<string name="_faq_rules_tournaments_body7">Призовой фонд турнира распределяется следующим образом:</string>
+	<string name="_faq_rules_tournaments_body8">В турнире побеждает игрок, набравший больше всех баллов по итогам турнира.</string>
+	<string name="_faq_rules_tournaments_header2">Ставки</string>
+	<string name="_faq_rules_tournaments_body9">В каждом туре до определенного времени (00.00 GMT) каждый игрок должен сделать три ставки в турнире на события следующих суток (с 00.00 до 23.59).</string>
+	<string name="_faq_rules_tournaments_body10">Игроки могут самостоятельно формировать турниры, приглашая в них друзей.</string>
+    -->
+
+    <string-array name="_faq_rules_tournaments_body">
+        <item>Игрок одновременно может участвовать в нескольких турнирах.</item>
+        <item>Игроки могут самостоятельно формировать турниры, приглашая в них друзей.</item>
+        <item>Для того чтобы участвовать в официальных турнирах игроку необходимо иметь в наличии внутреннюю игровую валюту — BC (Bet Coin).</item>
+        <item>Официальный турнир состоит из 3,7 или 10 туров. Участвуют от 6 или 9 игроков.</item>
+        <item>Турниры имеют разный вступительный взнос: 100 BC, 500 BC, 1000 BC.</item>
+        <item>В турнире побеждает игрок, набравший больше всех баллов по итогам турнира.</item>
+        <item>Призовой фонд турнира распределяется следующим образом:</item>
+        <item>В турнире побеждает игрок, набравший больше всех баллов по итогам турнира.</item>
+        <item>В каждом туре до определенного времени (00.00 GMT) каждый игрок должен сделать три ставки в турнире на события следующих суток (с 00.00 до 23.59).</item>
+        <item>Игроки могут самостоятельно формировать турниры, приглашая в них друзей.</item>
+    </string-array>
+
+    <string name="rule_news">Новости</string>
+    <string name="rule_messages">Обмен сообщениями</string>
+    <string name="rule_tournaments">Турниры</string>
+    <string name="rule_prize">Призовой фонд турнира</string>
+    <string name="rule_game_process">Игровой процесс</string>
+    <string name="rule_calculate">Правила расчёта ставок</string>
+    <string name="rule_stat">Статистика и рейтинг</string>
+    <string name="rule_balance">Баланс</string>
+    <string name="rule_news_a"><![CDATA[<p>В разделе новости Вы можете узнавать о новых акциях, конкурсах, а также получать другую полезную и интересную информацию.</p>]]></string>
+    <string name="rule_messages_a">
+<![CDATA[Пользователи могут обмениваться сообщениями друг с другом, используя для этого номер аккаунта BetStars.
+		Также внутри каждого турнира присутствует чат, в котором могут общаться только участники данного турнира.]]>
+    </string>
+    <string name="rule_tournaments_a">
+<![CDATA[Для того чтобы участвовать в официальных турнирах игроку необходимо иметь в наличии Внутреннюю игровую валюту (Bet Coin – BC).
+		<p>Официальный турнир состоит из 3,7 или 10 туров. Участвуют от 6 или 9 игроков.</p>
+		<p>Турниры имеют разный вступительный взнос: 100 BC, 500 BC, 1000 BC.</p>
+		<p>В турнире побеждает игрок, набравший больше всех баллов по итогам турнира.</p>
+		<p>Игрок одновременно может участвовать в нескольких турнирах.</p>
+		<p>Турнир начинается после регистрации всех участников турнира.</p>]]>
+    </string>
+    <string name="rule_prize_a">
+<![CDATA[<table border=1 ><tr><td colspan="4">6 игроков</td></tr>
+		<tr><td>Вступительный взнос</td><td>100 BC</td><td>500 BC</td><td>1000 BC</td></tr>
+		<tr><td>1 место</td><td>400 BC</td><td>2000 BC</td><td>4000 BC</td></tr>
+		<tr><td>2 место</td><td>200 BC</td><td>1000 BC</td><td>2000 BC</td></tr>
+		<tr><td colspan="4">9 игроков</td></tr>
+		<tr><td>Вступительный взнос</td><td>100 BC</td><td>500 BC</td><td>1000 BC</td></tr>
+		<tr><td>1 место</td><td>600 BC</td><td>3000 BC</td><td>6000 BC</td></tr>
+		<tr><td>2 место</td><td>300 BC</td><td>1500 BC</td><td>3000 BC</td></tr></table>]]>
+    </string>
+    <string name="rule_game_process_a"><![CDATA[Каждый тур до определенного времени (00.00 GMT) каждый игрок должен сделать три ставки в турнире на события следующих суток (с 00.00 до 23.59).]]></string>
+    <string name="rule_calculate_a">
+<![CDATA["В турнире каждая выигравшая ставка дает игроку балл, равный коэффициенту события минус 1 балл.
+		<p>Например, при сыгравшем коэффициенте 1.7 игрок получает 0.7 балла.</p>
+		<p>Каждая проигранная ставка засчитывается как минус 1 балл.</p>
+		<p>При попадании в тотал, фору и т.д. или отмене/остановке события ставка пользователя приносит ему 0 баллов.</p>
+		<p>Например, при ставке на тотал 2 больше в случае завершения матча с двумя голами ровно игрок получает 0 баллов.</p>
+		<p>Тоталом является количество забитых мячей в матче(футбол) или геймов в матче(теннис). Для выигрыша необходим правильный прогноз: больше («Бол») или меньше («Мен») будет голов/геймов в матче. При определении результата в учет принимается основное время матча. При попадании в Тотал ставка пользователя приносит ему 0 баллов.</p>
+		<p>Ставка с учетом форы предлагает определить результат матча, если одному из соперников дано преимущество либо отставание по голам/очкам/сетам/и т.д. Для того, чтобы определить выиграла ли ставка, необходимо прибавить (или отнять, в зависимости от знака''+''или''-'') значение форы к результату участника соревнования, на которого была поставлена ставка.</p>
+		Расчет ставок с форой - Два исхода ('П1 с форой' и 'П2 c форой'): <br/>
+		<p>- Если после сложения форы результат получается в пользу участника (команды/игрока), на которого была сделана ставка, то ставка считается выигрышной; </p>
+		<p>- Если после сложения форы результат получается в пользу противоположного соперника, то ставка считается проигрышной; </p>
+		<p>- Если после сложения форы получается ничейный результат, то ставка пользователя приносит ему 0 баллов. </p>
+		Максимальный коэффициент ставки равен 3 (если он выше, то при расчете он берется как 3). Например, если выиграла ставка с коэффициентом 3,4 ,то игроку засчитывается максимум 2 балла.<br/>
+		Если все три ставки выиграли, игрок получает бонус 0,3 балла.<br/>
+		Если игрок не сделал одну или несколько ставок в турнире до определенного времени (00.00 GMT) то за каждую не совершенную ставку игрок получает минус 1 балл."]]>
+    </string>
+    <string name="rule_stat_a">
+<![CDATA[В разделе статистика Вы можете увидеть следующую информацию:
+		Количество сыгранных турниров
+		Количество побед в турнирах
+		Средний набранный Вами балл (на основании его определяется Ваш рейтинг среди игроков)
+		Также в данном разделе Вы можете увидеть свой рейтинг и процент Ваших сыгравших ставок с определенными коэффициентами.
+		Во время участия в турнире Вы можете видеть свой рейтинг и рейтинг соперников, указанный в желтом облачке на аватаре.]]>
+    </string>
+    <string name="rule_balance_a"><![CDATA[В разделе баланс Вы можете увидеть количество Ваших беткойнов.]]></string>
+
+    <string-array name="faq_questions">
+        <item>Как зарегистрироваться на BetStars?</item>
+        <item>С какого возраста можно регистрироваться на BetStars?</item>
+        <item>Как зарегистрироваться для участия в турнире?</item>
+        <item>Как создать свой турнир?</item>
+        <item>Как делать ставки?</item>
+        <item>Как я могу пополнить баланс?</item>
+        <item>Могу ли я перевести часть беткойнов на другой аккаунт в BetStars?</item>
+        <item>Новости</item>
+        <item>Обмен сообщениями</item>
+        <item>Турниры</item>
+        <item>Призовой фонд турнира</item>
+        <item>Игровой процесс</item>
+        <item>Правила расчёта ставок</item>
+        <item>Статистика и рейтинг</item>
+        <item>Баланс</item>
+    </string-array>
+
+    <string name="how_to_req_q">Как зарегистрироваться на BetStars?</string>
+    <string name="how_to_years_old_q">С какого возраста можно регистрироваться на BetStars?</string>
+    <string name="how_to_join_tour_q">Как зарегистрироваться для участия в турнире?</string>
+    <string name="how_to_create_tour_q">Как создать свой турнир?</string>
+    <string name="how_to_make_bets_q">Как делать ставки?</string>
+    <string name="how_to_add_balance_q">Как я могу пополнить баланс?</string>
+    <string name="how_to_transfer_betcoins_q">Могу ли я перевести часть беткойнов на другой аккаунт в BetStars?</string>
+    <string name="how_to_req">
+<![CDATA[Если у вас нет аккаунта BetStars, вы можете зарегистрироваться, выполнив несколько простых действий.<br/>
+		1.	Скачайте приложение BetStars в Appstore или Google Play Market. <br/>
+		2.	В форме для регистрации, введите ваше имя, адрес электронной почты, дату рождения, город  и страну проживания.<br/> 
+		3.	Также вы можете зарегистрироваться с помощью аккаунта Facebook.<br/>
+		После регистрации вам будет необходимо подтвердить ваш адрес электронной почты.<br/>
+		Мы отправим вам эл. письмо или текстовое сообщение для подтверждения вашей регистрации.<br/>
+		Обратитесь за помощью, если вы не получили эл. письмо с подтверждением.]]>
+    </string>
+    <string name="how_to_years_old"><![CDATA[Чтобы иметь право зарегистрироваться на BetStars, вам должно быть не менее 12 лет.]]></string>
+    <string name="how_to_join_tour">
+<![CDATA[Для регистрации для участия в турнире игроку необходимо выбрать турнир из списка и нажать кнопку Join.<br/>
+		Для поиска турнира с определенными параметрами необходимо использовать кнопку Find в списке турниров.]]>
+    </string>
+    <string name="how_to_create_tour">
+<![CDATA[Для создания собственного турнира игроку необходимо нажать кнопку + в разделе турниры.
+		Затем игрок определяет параметры турнира и приглашает друзей с помощью их аккаунта BetStars (для зарегистрированных пользователей) или, приглашая их зарегистрировать свой аккаунт BetStars и сообщить ему номер аккаунта BetStars. 
+		<p>Предложения об участии в созданных турнирах игроки могут увидеть в Offers в разделе Турниры.</p>]]>
+    </string>
+    <string name="how_to_make_bets">
+<![CDATA[После нажатия на кнопку BET игроку необходимо выбрать вид спорта, лигу или чемпионат и конкретный матч.
+		Затем игрок выбирает определенный исход в матче и добавляет его в шортлист ставок.
+		Для осуществления ставки в определенном турнире игроку необходимо выбрать три ставки из шортлиста.]]>
+    </string>
+    <string name="how_to_add_balance">
+<![CDATA[В разделе баланс необходимо выбрать нужное Вам количество беткойнов и приобрести их.
+		Для оплаты беткойнов используется Ваша кредитная карта, привязанная к Вашему аккаунту в Appstore или Google Play Market.
+		Все платежи осуществляются в системах Appstore или Google Play Market,безопасность платежей гарантируется соответствующими компаниями.]]>
+    </string>
+    <string name="how_to_transfer_betcoins">
+<![CDATA[Да, Вы можете перевести часть беткойнов на другой аккаунт в BetStars.
+		Для этого необходимо в разделе баланс нажать кнопку Transfer и указать номер аккаунта BetStars.
+		Размер перевода ограничен ежедневным лимитом.]]>
+    </string>
+
+    <!-- Nav Drawer List Item Icons -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_news</item>
+        <item>@drawable/ic_msg</item>
+        <item>@drawable/ic_tournaments</item>
+        <item>@drawable/ic_stats</item>
+        <item>@drawable/ic_balance</item>
+        <item>@drawable/ic_faq</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="title_activity_account">My Profile</string>
+    <string name="bday">Birth Day</string>
+    <string name="title_activity_news_detail">NewsDetailActivity</string>
+    <string name="title_activity_create_tournament">Create</string>
+    <string name="createTournamentRb6People">6 players</string>
+    <string name="createTournamentRb9People">9 players</string>
+    <string name="addPlayerString">Add player</string>
+    <string name="inviteFriendString">Invite friend</string>
+    <string name="noNewMessages">Нет новых сообщений</string>
+    <string name="sendMessageHint">Send message</string>
+    <string name="title_activity_view_tournament">ViewTournamentActivity</string>
+    <string name="your_balance">Your balance:</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_short_list">Bet</string>
+    <string name="title_activity_sport_list">Sports</string>
+    <string name="title_activity_championanship">Championanship</string>
+    <string name="title_activity_games_list">GamesListActivity</string>
+    <string name="back_to_news_title">News</string>
+    <string name="title_activity_tournament_results">TournamentResultsActivity</string>
+
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:id="@+id/create_tournament_players_count_item">
+
+    <RadioButton
+        android:id="@+id/createTournamentRb9People"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/createTournamentRb6People"
+        android:layout_below="@+id/createTournamentRb6People"
+        android:text="@string/createTournamentRb9People" />
+
+    <RadioButton
+        android:id="@+id/createTournamentRb6People"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:text="@string/createTournamentRb6People" />
+    
+</RelativeLayout>

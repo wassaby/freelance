@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Digital Kiosk" default="war" basedir=".">
+
+	<description>Makes full building</description>
+
+	<property name="utils-location" location="../../commons/utils" />
+	<property name="struts-helper-location" location="../../commons/struts-helper" />
+	<property name="commons-beans-location" location="../../commons/commons-beans" />
+	<property name="template-webapp-location" location="." />
+
+	<property name="utils" location="${utils-location}/build.xml" />
+	<property name="struts-helper" location="${struts-helper-location}/build.xml" />
+	<property name="commons-beans" location="${commons-beans-location}/build.xml" />
+	<property name="template-webapp" location="${template-webapp-location}/build.xml" />
+
+	<property name="tmp" value="./tmp" />
+	<property name="source" value="${tmp}/java" />
+
+	<target name="compile" description="compile the source">
+		<ant antfile="${utils}" target="compile" inheritAll="false" />
+		<ant antfile="${struts-helper}" target="compile" inheritAll="false" />
+		<ant antfile="${commons-beans}" target="compile" inheritAll="false" />
+		<ant antfile="${template-webapp}" target="compile" inheritAll="false" />
+	</target>
+
+	<target name="distr" description="distributes archive of compiled files">
+		<ant antfile="${utils}" target="distr" inheritAll="false" />
+		<ant antfile="${struts-helper}" target="distr" inheritAll="false" />
+		<ant antfile="${commons-beans}" target="distr" inheritAll="false" />
+		<ant antfile="${template-webapp}" target="distr" inheritAll="false" />
+	</target>
+
+	<target name="deploy" description="deploys web application">
+		<ant antfile="${utils}" target="deploy" inheritAll="false" />
+		<ant antfile="${struts-helper}" target="deploy" inheritAll="false" />
+		<ant antfile="${commons-beans}" target="deploy" inheritAll="false" />
+		<ant antfile="${template-webapp}" target="deploy" inheritAll="false" />
+	</target>
+
+	<target name="war" depends="deploy" description="generates web application">
+		<ant antfile="${template-webapp}" target="war" inheritAll="false" />
+	</target>
+
+	<target name="deploy-war" description="deploys web application">
+		<ant antfile="${utils}" target="deploy" inheritAll="false" />
+		<ant antfile="${struts-helper}" target="deploy" inheritAll="false" />
+		<ant antfile="${commons-beans}" target="deploy" inheritAll="false" />
+		<ant antfile="${template-webapp}" target="deploy-war" inheritAll="false" />
+	</target>
+
+	<target name="clean" description="clean up distribution and deployment">
+		<ant antfile="${utils}" target="clean" inheritAll="false" />
+		<ant antfile="${struts-helper}" target="clean" inheritAll="false" />
+		<ant antfile="${commons-beans}" target="clean" inheritAll="false" />
+		<ant antfile="${template-webapp}" target="clean" inheritAll="false" />
+	</target>
+
+	<target name="clean-doc" description="clean up all docs">
+		<ant antfile="${utils}" target="clean-doc" inheritAll="false" />
+		<ant antfile="${struts-helper}" target="clean-doc" inheritAll="false" />
+		<ant antfile="${commons-beans}" target="clean-doc" inheritAll="false" />
+		<ant antfile="${template-webapp}" target="clean-doc" inheritAll="false" />
+	</target>
+
+	<target name="build-doc" description="clean up all docs">
+		<delete dir="${source}" />
+		<mkdir dir="${source}" />
+
+		<copy todir="${source}">
+			<fileset dir="${utils-location}/src/java" />
+			<fileset dir="${struts-helper-location}/src/java" />
+			<fileset dir="${commons-beans-location}/src/java" />
+			<fileset dir="${template-webapp-location}/src/java" />
+		</copy>
+
+		<ant antfile="${template-webapp}" target="build-doc" inheritAll="false">
+			<property name="src-dir" value="${source}" />
+		</ant>
+
+	</target>
+
+
+</project>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" singleton="true" lazy-init="false">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="@billing.database.dburl@"/>
+		<property name="username" value="@billing.database.user@"/>
+		<property name="password" value="@billing.database.password@"/>
+		<property name="validationQuery" value="select 1 from dual"/>
+		<property name="testOnReturn" value="true"/>
+		<property name="testOnBorrow" value="true"/>
+		<property name="testWhileIdle" value="true"/>
+		<property name="maxWait" value="10"/>
+		<property name="initialSize" value="5"/>
+		<property name="maxActive" value="10"/>
+		<property name="maxIdle" value="10"/>
+		<property name="timeBetweenEvictionRunsMillis" value="5000"/>
+		<property name="defaultAutoCommit" value="false"/>
+	</bean>
+	
+	<!-- <bean id="dynamicImage" class="com.teremok.commons.beans.img.BDynamicImageImpl" singleton="false" lazy-init="true">
+	</bean>
+	
+	<bean id="spyLogin" class="com.teremok.commons.beans.spy.login.BLoginImpl" singleton="false" lazy-init="true">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<bean id="spyProperty" class="com.teremok.commons.beans.spy.property.BPropertyImpl" singleton="false" lazy-init="true">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="spy" class="com.teremok.commons.beans.spy.spy.BSpyImpl" singleton="false" lazy-init="true">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="login" ref="spyLogin"/>
+	</bean> -->
+	
+	<bean id="mail" class="com.teremok.commons.beans.mail.BMailImpl" singleton="false" lazy-init="true">
+		<property name="mailFrom" value="@mail.from@"/>
+		<property name="mailPass" value="@mail.pass@"/>
+		<property name="mailTo" value="@mail.to@"/>
+	</bean>
+	
+	<bean id="login" class="com.rs.commons.beans.login.BLoginImpl" singleton="false" lazy-init="true">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="file" class="com.teremok.commons.beans.file.BFileImpl" singleton="false" lazy-init="true">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="user" class="com.rs.commons.vio.user.BUserImpl" singleton="false" lazy-init="true">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="report" class="com.rs.commons.vio.report.BReportImpl" singleton="false" lazy-init="true">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="dict" class="com.rs.commons.beans.vio.dict.BDictImpl" singleton="false" lazy-init="true">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="formatter" class="com.teremok.utils.formatter.FormatterFactory" singleton="true" lazy-init="true" init-method="initialize">
+		<constructor-arg index="0" value="@formatterLocale@"/>
+	</bean>
+
+	<bean name="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" init-method="start" destroy-method="destroy">
+        <property name="triggers">
+            <list>
+                <ref bean="logArchivatorTrigger" />
+            </list>
+        </property>
+    </bean>
+	
+    <bean id="logArchivatorTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="logArchivatorDetail" />
+        <!-- run every day at 6:00 AM -->
+        <property name="cronExpression" value="0 0 6 * * ?" />
+    </bean>
+	
+    <bean id="logArchivatorDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="logArchivator" />
+        <property name="targetMethod" value="execute" />
+        <property name="concurrent" value="false" />
+    </bean>
+
+    <bean id="logArchivator" class="com.teremok.utils.scheduler.jobs.LogArchivatorJob" singleton="true" init-method="initialize" destroy-method="destroy">
+        <property name="logsPath" value="@logger.home@" />
+        <property name="dateFormat" value="yyyy-MM-dd" />
+    </bean>
+
+</beans>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="fill_parent"
+    android:id="@+id/create_tournament_players_count_item">
+    
+    <ListView
+        android:id="@+id/addUsrUsrlistView123"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+    </ListView>
+    
+</RelativeLayout>

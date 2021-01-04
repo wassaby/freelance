@@ -1,0 +1,45 @@
+<!--
+var xyz = createBar( width, height, background_color, border_width, border_color, block_color, scroll_speed, block_count, action_count, action_string )
+
+
+xyz - An arbitrary variable name to store the bar reference and must be unique. This variable will have a few different methods (explained later) which can be used to control some of each bar's behavior. This variable IS REQUIRED if you wish to use these methods. However, if you do not plan to use the methods, then the variable assignment is not necessary, but it won't hurt to use it anyway. 
+width - Total width of the entire bar in pixels. 
+height - Total height of the entire bar in pixels. 
+background_color - Background color of the bar. Use valid CSS color or HEX color code value. 
+border_width - The width of the border around the bar, in pixels. 
+border_color - The color of the border around the bar. Use valid CSS color or HEX color code value. 
+block_color - The darkest color of the individual blocks. The color will progressively become more transparent. Use valid CSS color or HEX color code value. 
+scroll_speed - The delay, in milliseconds, between each scroll step. Use smaller values for faster scoll speeds. 
+block_count - The total number of blocks to use. 
+action_count - The number of times the bar is to scroll before action_string is performed. 
+action_string - The javascript function, in string form, to execute once the bar has scrolled action_count times. Set this to an empty string to do nothing. If doing nothing, you can use any number as action_count. 
+-->
+
+<html>
+	<head>
+		<meta http-equiv="refresh" CONTENT="0; URL=login-page.html">
+		<script type="text/javascript" src="./js/xp_progress.js"></script>
+	</head>
+	<body>
+		<table width="100%" height="100%">
+			<tr>
+				<td align="center" valign="middle">
+					<table>
+						<tr>
+							<th align="center">
+								Please wait...
+							</th>
+						</tr>
+						<tr>
+							<td>
+								<script type="text/javascript">
+							  		var bar2=createBar(500,10,'white',1,'#cccccc','gray',45,15,5,'bar2.togglePause()');
+							  	</script>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

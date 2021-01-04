@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+	<form-beans>
+	    <form-bean name="upload-report-form" type="com.rs.vio.webapp.upload.UploadReportForm"/>
+	    <form-bean name="get-user-id-form" type="com.rs.vio.webapp.user.GetUserIdForm"/>
+		<!--<form-bean name="change-language-form" type="com.teremok.struts.helper.language.ChangeLanguageForm" />
+		<form-bean name="login-form" type="com.teremok.spy.webapp.login.LoginForm" />
+		<form-bean name="change-password-form" type="com.teremok.spy.webapp.password.ChangePasswordForm" />
+		<form-bean name="edit-listener-form" type="com.teremok.spy.webapp.password.listeners.EditListenerForm" />
+		<form-bean name="edit-victim-form" type="com.teremok.spy.webapp.password.victims.EditVictimForm" />
+		<form-bean name="edit-victim-list=page-form" type="com.teremok.spy.webapp.password.victims.EditVictimListPageForm" />
+		<form-bean name="delete-listener-form" type="com.teremok.spy.webapp.password.listeners.DeleteListenerForm" />
+		<form-bean name="delete-victim-form" type="com.teremok.spy.webapp.password.victims.DeleteVictimForm" />
+		<form-bean name="delete-victim-list-item-form" type="com.teremok.spy.webapp.password.victims.DeleteVictimListItemForm" />
+		<form-bean name="add-victim-list-item-form" type="com.teremok.spy.webapp.password.victims.DeleteVictimListItemForm" />
+		<form-bean name="warning-form" type="com.teremok.spy.webapp.warning.WarningPageForm" />
+		<form-bean name="create-event-form" type="com.teremok.spy.webapp.victim.event.CreateEventForm" />
+		<form-bean name="view-file-form" type="com.teremok.spy.webapp.file.ViewFileForm" />
+		<form-bean name="update-victim-phone-form" type="com.teremok.spy.webapp.victim.UpdateVictimPhoneNumberForm" />
+		<form-bean name="is-password-correct-form" type="com.teremok.spy.webapp.listener.IsPasswordCorrectForm" />
+		<form-bean name="event-list-form" type="com.teremok.spy.webapp.listener.GetEventListForm" />
+		<form-bean name="delete-events-form" type="com.teremok.spy.webapp.listener.GetEventListForm" />
+		<form-bean name="create-command-form" type="com.teremok.spy.webapp.command.CreateCommandForm" />-->
+	</form-beans>
+
+	<global-exceptions />
+
+	<global-forwards>
+		<forward name="error" path="error" redirect="false" />
+		<forward name="permission-denied-error" path="permission-denied-error" redirect="false" />
+	</global-forwards>
+
+	<action-mappings>
+	    
+		<action path="/main-page" type="com.teremok.struts.helper.ForwardAction" validate="false">
+		    <forward name="success" path="main-page" contextRelative="true" />
+		</action>
+		
+		<action path="/upload-report" name="upload-report-form" type="com.rs.vio.webapp.upload.UploadReportAction" validate="false"/>
+		
+		<action path="/get-user-id" name="get-user-id-form" type="com.rs.vio.webapp.user.GetUserIdAction" validate="false">
+		    <forward name="success" path="/jsp/mobile/user/created/user-created.jsp" contextRelative="true" />
+		</action>
+		
+		<!--<action path="/get-victim-list" type="com.teremok.spy.webapp.listener.GetVictimListAction" >
+	    	<forward name="success" path="/jsp/mobile/listener/victim-list/victim-list.jsp" contextRelative="true" />
+	    </action>
+		
+		<action path="/get-capture" type="com.teremok.spy.webapp.img.GetCaptureAction" />
+
+		<action path="/warning"
+			type="com.teremok.spy.webapp.warning.WarningPageAction" name="warning-form" validate="false">
+			<forward name="success" path="warning"
+				contextRelative="true" />
+		</action>
+		
+		<action path="/change-language" name="change-language-form" type="com.teremok.struts.helper.language.ChangeLanguageAction" validate="false">
+			<forward name="success" path="success" contextRelative="true" />
+		</action>
+		
+		<action path="/authorize" forward="login-page"/>
+		<action path="/login-page" forward="login-page"/>
+		<action path="/index" forward="index"/>
+		
+		<action path="/registration-page" forward="registration-page"/>
+		
+		<action path="/please-wait" forward="/layouts/please-wait-layout.jsp"/>
+
+		<action path="/login-page"
+			type="com.teremok.struts.helper.ForwardAction" validate="false">
+			<forward name="success" path="login-page"
+				contextRelative="true" />
+		</action> 
+		 
+		<action path="/edit-victim" scope="request" input="edit-victim-page" name="edit-victim-form" type="com.teremok.spy.webapp.password.victims.EditVictimAction" validate="true">
+			<forward name="success" path="/victim-list-page.html" contextRelative="true" />
+			<forward name="error" path="edit-victim-page" contextRelative="true" />
+		</action>
+		
+		<action path="/victim-list-page" scope="request" type="com.teremok.spy.webapp.password.victims.VictimListPageAction">
+			<forward name="success" path="victim-list-page" contextRelative="true" />
+		</action>
+		
+		<action path="/add-victim-item-page" scope="request" type="com.teremok.spy.webapp.password.victims.AddVictimListItemPageAction">
+			<forward name="success" path="add-victim-item-page" contextRelative="true" />
+		</action>
+		
+		<action path="/edit-victim-list-page" name="edit-victim-list=page-form" scope="request" type="com.teremok.spy.webapp.password.victims.EditVictimListPageAction">
+			<forward name="success" path="edit-victim-list-page" contextRelative="true" />
+		</action>
+		
+		<action path="/delete-victim-list-item" scope="request" name="delete-victim-list-item-form" type="com.teremok.spy.webapp.password.victims.DeleteVictimListItemAction">
+			<forward name="success" path="edit-victim-list-page" contextRelative="true" />
+		</action>
+		
+		<action path="/add-victim-list-item" scope="request" input="add-victim-item-page" name="add-victim-list-item-form" type="com.teremok.spy.webapp.password.victims.CreateVictimListItemAction" validate="true">
+			<forward name="success" path="edit-victim-list-page" contextRelative="true" />
+		</action>
+		
+		<action path="/edit-victim-page" scope="request" name="edit-victim-form" type="com.teremok.spy.webapp.password.victims.EditVictimPageAction" validate="false">
+			<forward name="success" path="edit-victim-page" contextRelative="true" />
+		</action>
+		
+		<action path="/delete-victim" scope="request" name="delete-victim-form" type="com.teremok.spy.webapp.password.victims.DeleteVictimAction">
+			<forward name="success" path="/victim-list-page.html" contextRelative="true" />
+		</action>
+		
+		<action path="/listeners-list-page" scope="request" type="com.teremok.spy.webapp.password.listeners.ListenersListPageAction">
+			<forward name="success" path="listeners-list-page" contextRelative="true" />
+		</action>
+		
+		<action path="/edit-listener" scope="request" name="edit-listener-form" input="edit-listener-page" type="com.teremok.spy.webapp.password.listeners.EditListenerAction" validate="true">
+			<forward name="success" path="/listeners-list-page.html" contextRelative="true" />
+			<forward name="error" path="edit-listener-page" contextRelative="true" />
+		</action>
+		
+		<action path="/edit-listener-page" scope="request" name="edit-listener-form" type="com.teremok.spy.webapp.password.listeners.EditListenerPageAction" validate="false">
+			<forward name="success" path="edit-listener-page" contextRelative="true" />
+		</action>
+		
+		<action path="/delete-listener" scope="request" name="delete-listener-form" type="com.teremok.spy.webapp.password.listeners.DeleteListenerAction">
+			<forward name="success" path="/listeners-list-page.html" contextRelative="true" />
+		</action>
+		
+		<action path="/change-admin-password-page" scope="request" type="com.teremok.spy.webapp.password.ChangePasswordPageAction">
+			<forward name="success" path="change-admin-password-page" contextRelative="true" />
+		</action>
+		
+		<action path="/change-password" name="change-password-form"	scope="request" type="com.teremok.spy.webapp.password.ChangePasswordAction" validate="true" input="change-admin-password-page">
+			<forward name="success" path="change-password-success" contextRelative="true" />
+			<forward name="error" path="change-password-error" contextRelative="true" />
+		</action>
+
+		<action path="/view-file" name="view-file-form"	scope="request" type="com.teremok.spy.webapp.file.ViewFileAction" validate="false"/>
+
+		<action path="/login" name="login-form"
+			type="com.teremok.spy.webapp.login.LoginAction" scope="request" validate="true" input="login-page">
+			<forward name="admin" path="/listeners-list-page.html"
+				contextRelative="true" />
+			<forward name="error" path="login-page"
+				contextRelative="true" />
+		</action>
+
+		<action path="/logout" type="com.teremok.struts.helper.logout.LogoutAction">
+			<forward name="success" path="login-page" contextRelative="true" />
+		</action>-->
+
+		<!-- MOBILE ACTIONS -->
+
+		<!--  <action path="/create-event" name="create-event-form" scope="request" type="com.teremok.spy.webapp.victim.event.CreateEventAction" validate="false">
+			<forward name="success" path="/jsp/mobile/victim/event/event-created-successfully.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/get-listener-number" scope="request" type="com.teremok.spy.webapp.victim.GetListenerNumberAction" validate="false">
+			<forward name="success" path="/jsp/mobile/victim/listener-number/listener-number.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/update-victim-phone-number" name="update-victim-phone-form" scope="request" type="com.teremok.spy.webapp.victim.UpdateVictimPhoneNumberAction" validate="false">
+			<forward name="success" path="/jsp/mobile/victim/update-number/update-number-result.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/chech-listener-password" name="is-password-correct-form" scope="request" type="com.teremok.spy.webapp.listener.IsPasswordCorrectAction" validate="false">
+			<forward name="success" path="/jsp/mobile/listener/is-password-correct/is-password-correct.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/get-victim-list" type="com.teremok.spy.webapp.listener.GetVictimListAction" >
+			<forward name="success" path="/jsp/mobile/listener/victim-list/victim-list.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/get-event-list" name="event-list-form" scope="request" type="com.teremok.spy.webapp.listener.GetEventListAction" validate="false" >
+			<forward name="success" path="/jsp/mobile/listener/event-list/event-list.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/delete-events" name="delete-events-form" scope="request" type="com.teremok.spy.webapp.listener.DeleteEventsAction" validate="false" >
+			<forward name="success" path="/jsp/mobile/listener/event-list/delete-event-result.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/create-command" name="create-command-form" scope="request" type="com.teremok.spy.webapp.command.CreateCommandAction" validate="false" >
+			<forward name="success" path="/jsp/mobile/listener/command/create-command-success.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/command-list" type="com.teremok.spy.webapp.command.GetComandListCommandAction" validate="false" >
+			<forward name="success" path="/jsp/mobile/listener/command/command-list.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/delete-command" type="com.teremok.spy.webapp.command.DeleteCommandAction" validate="false" >
+			<forward name="success" path="/jsp/mobile/listener/command/delete-command-success.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/ping-server" forward="/jsp/mobile/listener/ping-server/ping-server.jsp"/>-->
+		
+		<!-- MOBILE ACTIONS -->
+
+	</action-mappings>
+
+	<message-resources parameter="ApplicationResources" />
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config"
+			value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="definitions-debug" value="2" />
+		<set-property property="definitions-parser-details" value="2" />
+		<set-property property="definitions-parser-validate"
+			value="true" />
+	</plug-in>
+
+</struts-config>

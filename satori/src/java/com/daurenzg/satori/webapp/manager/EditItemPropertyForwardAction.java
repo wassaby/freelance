@@ -1,0 +1,44 @@
+package com.daurenzg.satori.webapp.manager;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import com.daurenzg.commons.beans.satori.item.BCommonItemInfo;
+import com.daurenzg.commons.beans.satori.item.BItemInfo;
+import com.daurenzg.commons.beans.satori.item.IBItem;
+import com.daurenzg.satori.webapp.AbstractManagerAction;
+import com.daurenzg.satori.webapp.SatoriConstants;
+import com.teremok.commons.beans.IComponentFactory;
+import com.teremok.struts.helper.StrutsHelperConstants;
+
+public class EditItemPropertyForwardAction extends AbstractManagerAction {
+
+	@Override
+	protected ActionForward executeManagerAction(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		HttpSession session = request.getSession(true);
+		IComponentFactory manager = (IComponentFactory) session
+				.getServletContext().getAttribute(SatoriConstants.MANAGER_ATTR);
+		IBItem item = manager.getItem();
+		BCommonItemInfo commonItemInfo = (BCommonItemInfo) session.getAttribute(SatoriConstants.COMMON_ITEM_INFO);
+		List<BItemInfo> statusList = item.getStatuses();
+		List<BItemInfo> languageList = item.getLanguageList();
+		List<BItemInfo> parentItemList = item.getItemList(commonItemInfo.getLangId());
+		List<BItemInfo> typeList = item.getItemTypes();
+
+		session.setAttribute(SatoriConstants.STATUSES, statusList);
+		session.setAttribute(SatoriConstants.LANGUAGE_LIST, languageList);
+		session.setAttribute(SatoriConstants.PARENT_LANG_ITEM, parentItemList);
+		session.setAttribute(SatoriConstants.ITEM_TYPES, typeList);
+		return mapping.findForward(StrutsHelperConstants.SUCCESS_FORWARD);
+	}
+}

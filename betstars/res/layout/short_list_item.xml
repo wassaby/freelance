@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/eventNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="1."
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/eventNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/eventNumberTextView"
+        android:layout_alignBottom="@+id/eventNumberTextView"
+        android:layout_toRightOf="@+id/eventNumberTextView"
+        android:text="Spartak Moscow"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/eventDeleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorRed"
+        android:layout_alignBaseline="@+id/eventNameTextView"
+        android:layout_alignBottom="@+id/eventNameTextView"
+        android:layout_alignParentRight="true"
+        android:text="Delete" />
+
+    <Spinner
+        android:id="@+id/shortListOptionsSpinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/eventNameTextView"
+        android:layout_below="@+id/shortListBetSpinner1"
+        android:layout_marginTop="16dp" />
+
+    <Spinner
+        android:id="@+id/shortListBetSpinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/eventNameTextView"
+        android:layout_below="@+id/eventNumberTextView" />
+
+    <TextView
+        android:id="@+id/eventBetTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/eventDeleteTextView"
+        android:layout_alignBottom="@+id/eventDeleteTextView"
+        android:layout_marginRight="23dp"
+        android:layout_toLeftOf="@+id/eventDeleteTextView"
+        android:text="BET"
+        android:textColor="@color/betButtonColor" />
+
+</RelativeLayout>

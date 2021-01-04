@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+
+	<form-beans>
+	    <form-bean name="change-language-form" type="com.teremok.struts.helper.language.ChangeLanguageForm" />
+	    
+	    <form-bean name="admin-get-reports-form" type="com.rs.vio.webapp.admin.report.GetReportsForm" />
+	    <form-bean name="admin-view-report-form" type="com.rs.vio.webapp.admin.report.AdminViewReportForm"/>
+	    <form-bean name="admin-get-reports-by-status-form" type="com.rs.vio.webapp.admin.report.GetReportsByStatusForm"/>
+	    
+	    <form-bean name="change-status-form" type="com.rs.vio.webapp.admin.report.ChangeStatusForm"/>
+	    <form-bean name="reject-report-form" type="com.rs.vio.webapp.admin.report.RejectReportForm"/>
+	    <form-bean name="delete-image-form" type="com.rs.vio.webapp.admin.report.DeleteImageForm"/>
+	    <form-bean name="admin-list-form" type="com.rs.vio.webapp.admin.report.AdminListForm"/>
+	    
+	    <form-bean name="add-status" type="com.rs.vio.webapp.admin.dict.AddStatusForm"/>
+	    <form-bean name="delete-status" type="com.rs.vio.webapp.admin.dict.DeleteStatusForm"/>
+	    <form-bean name="edit-status" type="com.rs.vio.webapp.admin.dict.EditStatusForm"/>
+	    <form-bean name="add-instance" type="com.rs.vio.webapp.admin.dict.AddInstanceForm"/>
+	    <form-bean name="delete-instance" type="com.rs.vio.webapp.admin.dict.DeleteInstanceForm"/>
+	    <form-bean name="edit-instance" type="com.rs.vio.webapp.admin.dict.EditInstanceForm"/>
+	    
+	    <form-bean name="get-reports-by-type-form" type="com.rs.vio.webapp.webform.GetReportsTypeForm"/>
+	    
+	    <form-bean name="get-reports-form" type="com.rs.vio.webapp.webform.GetReportsForm" />
+	    <form-bean name="login-form" type="com.rs.vio.webapp.login.LoginForm" />
+	    <form-bean name="view-report-form" type="com.rs.vio.webapp.webform.ViewReportForm"/>
+	    <form-bean name="get-user-id-form" type="com.rs.vio.webapp.user.GetUserIdForm"/>
+	    <form-bean name="insert-to-report-form" type="com.rs.vio.webapp.upload.UploadReportForm"/>
+	    <form-bean name="upload-file-form" type="com.rs.vio.webapp.upload.UploadReportFileForm" />
+	    <form-bean name="get-user-report-list-form" type="com.rs.vio.webapp.user.GetUserReportListForm" />
+	    <form-bean name="view-photo-form" type="com.rs.vio.webapp.webform.ViewPhotoForm" />
+	    <form-bean name="view-file-form" type="com.rs.vio.webapp.webform.ViewFileForm" />
+	    <form-bean name="get-sized-image-form" type="com.rs.vio.webapp.webform.GetSizedImageForm" />
+	    <form-bean name="get-reports-by-month-form" type="com.rs.vio.webapp.admin.report.GetReportsByMonthForm"/>
+	    <form-bean name="update-report-form" type="com.rs.vio.webapp.upload.UpdateReportForm"/>
+		<form-bean name="get-reports-type-form" type="com.rs.vio.webapp.user.GetReportsByCategoryForm"/>
+		<form-bean name="rotate-image-form" type="com.rs.vio.webapp.admin.report.RotateImageForm"/>
+		<form-bean name="download-xls-form" type="com.rs.vio.webapp.admin.report.DownloadXLSForm"/>
+	    
+	    <!-- TEST -->
+	    <form-bean name="test-upload-form" type="com.rs.vio.webapp.upload.UploadReportFileForm" />
+	    <form-bean name="test-map-form" type="com.rs.vio.webapp.test.GetAddressForm" />
+	    <form-bean name="test-rotate-form" type="com.rs.vio.webapp.test.TestRotateForm" />
+	</form-beans>
+
+	<global-exceptions />
+
+	<global-forwards>
+		<forward name="error" path="error" redirect="false" />
+		<forward name="permission-denied-error" path="permission-denied-error" redirect="false" />
+		<forward name="not-authorized-mobile-request-error" path="/jsp/mobile/error/not-authorized-error.jsp" redirect="false" />
+	</global-forwards>
+
+	<action-mappings>
+	    
+	    <!-- Test -->
+	    <action path="/test" forward="test"/>
+	    <action path="/test-upload" name="test-upload-form" type="com.rs.vio.webapp.upload.UploadReportFileAction"/>
+	    <action path="/test-map" name="test-map-form" type="com.rs.vio.webapp.test.GetAddressAction"/>
+	    <action path="/test-rotate-image" name="test-rotate-form" type="com.rs.vio.webapp.test.TestRotateAction">
+	        <forward name="success" path="test" contextRelative="true"/>
+	        <forward name="error" path="common-error" contextRelative="true"/>
+	    </action>
+	    <action path="/send-email" type="com.rs.vio.webapp.test.TestSendEmailAction"/>
+	    <!-- Common parts -->
+	    
+	    <action path="/authorize" forward="/login-page.html"/>
+	    <action path="/logout" type="com.rs.vio.webapp.login.LogoutAction" validate="false">
+			<forward name="success" path="/index.html" contextRelative="true"/>
+		</action>
+	    <action path="/login-page" type="com.teremok.struts.helper.ForwardAction" validate="false">
+			<forward name="success" path="login-page" contextRelative="true" />
+		</action>
+	    <action path="/login" name="login-form" scope="request" input="login-page" type="com.rs.vio.webapp.login.LoginAction" validate="true">
+			<forward name="success" path="/admin-main.html" contextRelative="true" />
+			<forward name="error" path="login-page" contextRelative="true" />
+		</action>
+	    <action path="/index" scope="request" name="get-reports-by-type-form" type="com.rs.vio.webapp.webform.IndexGetReportsAction" validate="false">
+			<forward name="success" path="index" contextRelative="true" />
+			<forward name="error" path="common-error" contextRelative="true"/>
+		</action>
+	    <action path="/view-report" name="view-report-form" type="com.rs.vio.webapp.webform.ViewReportAction" validate="false">
+		    <forward name="success" path="view-report" contextRelative="true" />
+		    <forward name="error" path="common-error" contextRelative="true" />
+		</action>
+		
+		<!-- Эти не используются -->
+	    <action path="/reports-categories" name="get-reports-by-type-form" type="com.rs.vio.webapp.webform.GetReportsTypeAction" validate="false">
+	        <forward name="success" path="index" contextRelative="true" />
+			<forward name="error" path="common-error" contextRelative="true"/>
+		</action>
+	    <action path="/get-report-photo" type="com.rs.vio.webapp.webform.GetReportPhotosAction"/>
+	    <action path="/view-file" type="com.rs.vio.webapp.webform.ViewFileAction" name="view-file-form" scope="request" validate="false"/>
+	    <action path="/change-language" name="change-language-form" type="com.teremok.struts.helper.language.ChangeLanguageAction" validate="false">
+			<forward name="success" path="success" contextRelative="true" />
+		</action>
+		<action path="/get-month-reports" name="get-reports-by-month-form" type="com.rs.vio.webapp.webform.GetReportsByMonthAction" validate="false">
+			<forward name="success" path="index" contextRelative="true" />
+			<forward name="error" path="common-error" contextRelative="true" />
+		</action>
+		<!-- Эти не используются -->
+		
+		<action path="/map" name="get-reports-by-type-form" type="com.rs.vio.webapp.webform.MapAction" validate="false">
+			<forward name="success" path="map" contextRelative="true" />
+			<forward name="error" path="common-error" contextRelative="true" />
+		</action>
+		
+		
+	    <!-- Users part -->
+	    
+		<action path="/reports" name="get-reports-form" type="com.rs.vio.webapp.webform.GetReportsAction" validate="false">
+		    <forward name="success" path="/jsp/main/reports.jsp" contextRelative="true" />
+		    <forward name="error" path="/jsp/error.jsp" contextRelative="true" />
+		</action>
+		
+		<action path="/view-photo" name="view-photo-form" scope="request" type="com.rs.vio.webapp.webform.ViewPhotoAction" validate="false">
+			<forward name="success" path="/jsp/common/view-photo.jsp" contextRelative="true" />
+			<forward name="error" path="/jsp/error.jsp" contextRelative="true" />
+		</action>
+		
+
+		
+		<!-- Admin part -->
+	    
+	    <action path="/admin-main" name="admin-get-reports-form" scope="request" type="com.rs.vio.webapp.admin.report.GetReportsAction" validate="false">
+			<forward name="success" path="admin-main" contextRelative="true" />
+			<forward name="error" path="common-error" contextRelative="true" />
+		</action>
+		<action path="/admin-view-report" name="admin-view-report-form" type="com.rs.vio.webapp.admin.report.AdminViewReportAction" validate="false">
+			<forward name="success" path="admin-view-report" contextRelative="true" />
+			<forward name="error" path="common-error" contextRelative="true" />
+		</action>
+	    <action path="/change-status" name="change-status-form" type="com.rs.vio.webapp.admin.report.ChangeStatusAction" validate="false">
+	        <forward name="success" path="/admin-list.html" contextRelative="true" />
+		    <forward name="error" path="common-error" contextRelative="true" />
+		</action>
+		
+		<action path="/admin-list" name="admin-list-form" scope="request" type="com.rs.vio.webapp.admin.report.AdminListAction" validate="false">
+			<forward name="success" path="admin-list" contextRelative="true" />
+			<forward name="error" path="common-error" contextRelative="true" />
+		</action>
+		
+		<action path="/get-statuses" type="com.rs.vio.webapp.admin.report.GetStatusesAction" validate="false">
+		    <forward name="success" path="/jsp/admin/main/statuses.jsp" contextRelative="true" />
+		    <forward name="error" path="/jsp/error.jsp" contextRelative="true" />
+		</action>
+	    <action path="/get-instances" type="com.rs.vio.webapp.admin.report.GetInstancesAction" validate="false">
+		    <forward name="success" path="/jsp/admin/main/instances.jsp" contextRelative="true" />
+		    <forward name="error" path="/jsp/error.jsp" contextRelative="true" />
+		</action>
+		<action path="/delete-image" name="delete-image-form" type="com.rs.vio.webapp.admin.report.DeleteImageAction" validate="false">
+			<forward name="success" path="admin-view-report" contextRelative="true" />
+		    <forward name="error" path="common-error" contextRelative="true" />
+		</action>
+		
+		<action path="/rotate-image" name="rotate-image-form" type="com.rs.vio.webapp.admin.report.RotateImageAction" validate="false">
+			<forward name="success" path="admin-view-report" contextRelative="true" />
+		    <forward name="error" path="common-error" contextRelative="true" />
+		</action>
+		
+		<action path="/download-xls" name="download-xls-form"  type="com.rs.vio.webapp.admin.report.DownloadXLSAction" validate="false"/>
+			<!-- <forward name="success" path="admin-view-report" contextRelative="true" />
+		    <forward name="error" path="common-error" contextRelative="true" />
+		</action> -->
+		
+	    <action path="/admin-get-month-reports" name="get-reports-by-month-form" type="com.rs.vio.webapp.admin.report.GetReportsByMonthAction" validate="false"/>
+		<action path="/reject-report" name="reject-report-form" type="com.rs.vio.webapp.admin.report.RejectReportAction" validate="false"/>
+		<action path="/add-status" name="add-status" type="com.rs.vio.webapp.admin.dict.AddStatusAction" validate="false"/>
+		<action path="/delete-status" name="delete-status" type="com.rs.vio.webapp.admin.dict.DeleteStatusAction" validate="false"/>
+		<action path="/edit-status" name="edit-status" type="com.rs.vio.webapp.admin.dict.EditStatusAction" validate="false"/>
+		<action path="/add-instance" name="add-instance" type="com.rs.vio.webapp.admin.dict.AddStatusAction" validate="false"/>
+		<action path="/delete-instance" name="delete-instance" type="com.rs.vio.webapp.admin.dict.DeleteStatusAction" validate="false"/>
+		<action path="/edit-instance" name="edit-instance" type="com.rs.vio.webapp.admin.dict.EditStatusAction" validate="false"/>
+		
+	    
+		<!-- Mobile part -->
+		
+		<action path="/get-user-id" name="get-user-id-form" type="com.rs.vio.webapp.user.GetUserIdAction" validate="false">
+		    <forward name="success" path="/jsp/mobile/user/created/user-created.jsp" contextRelative="true" />
+		    <forward name="error" path="/jsp/error.jsp" contextRelative="true" />
+		</action>
+		<action path="/insert-to-report" name="insert-to-report-form" type="com.rs.vio.webapp.upload.UploadReportAction" validate="false">
+		    <forward name="success" path="/jsp/mobile/all-report/report/report-inserted.jsp" contextRelative="true" />
+		    <forward name="error" path="/jsp/error.jsp" contextRelative="true" />
+		</action>
+		<action path="/upload-file" name="upload-file-form" scope="request" type="com.rs.vio.webapp.upload.UploadReportFileAction" validate="false">
+			<forward name="success" path="/jsp/mobile/all-report/report/report-file-inserted-successfully.jsp" contextRelative="true" />
+			<forward name="error" path="/jsp/error.jsp" contextRelative="true" />
+		</action>
+		<action path="/get-report-list" name="get-reports-form" type="com.rs.vio.webapp.user.GetReportListAction" >
+	    	<forward name="success" path="/jsp/mobile/all-report/report/report-list.jsp" contextRelative="true" />
+	    	<forward name="error" path="/jsp/error.jsp" contextRelative="true" />
+	    </action>
+	    <action path="/get-report-type-list" name="get-reports-type-form" type="com.rs.vio.webapp.user.GetReportsByCategoryAction" >
+	    	<forward name="success" path="/jsp/mobile/all-report/report/report-list.jsp" contextRelative="true" />
+	    	<forward name="error" path="/jsp/error.jsp" contextRelative="true" />
+	    </action>
+		<action path="/get-user-report-list" name="get-user-report-list-form" type="com.rs.vio.webapp.user.GetUserReportListAction" >
+	    	<forward name="success" path="/jsp/mobile/all-report/report/report-list.jsp" contextRelative="true" />
+	    	<forward name="error" path="/jsp/error.jsp" contextRelative="true" />
+	    </action>
+	    <action path="/update-report" name="update-report-form" type="com.rs.vio.webapp.upload.UpdateReportAction" >
+	    	<forward name="success" path="/jsp/mobile/all-report/report/report-updated.jsp" contextRelative="true" />
+	    	<forward name="error" path="/jsp/error.jsp" contextRelative="true" />
+	    </action>
+	    
+		
+	</action-mappings>
+
+	<message-resources parameter="ApplicationResources" />
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config"
+			value="/WEB-INF/tiles-defs.xml" />
+		<set-property property="definitions-debug" value="2" />
+		<set-property property="definitions-parser-details" value="2" />
+		<set-property property="definitions-parser-validate"
+			value="true" />
+	</plug-in>
+
+</struts-config>

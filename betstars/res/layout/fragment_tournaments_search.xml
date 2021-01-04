@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/searchTournamentPlayersCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"
+        android:text="@string/searchTournamentPlayersCountMessage"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Spinner
+        android:id="@+id/searchTournamentPlayersCountSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/searchTournamentPlayersCountTextView" />
+
+    <TextView
+        android:id="@+id/searchTournamentsTermTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/searchTournamentPlayersCountSpinner"
+        android:text="@string/searchTournamentTermMessage"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Spinner
+        android:id="@+id/searchTournamentTermSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/searchTournamentsTermTextView" />
+
+    <TextView
+        android:id="@+id/searchTournamentAnteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/searchTournamentTermSpinner"
+        android:text="@string/searchTournamentAnteMessage"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Spinner
+        android:id="@+id/searchTournamentAnteSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/searchTournamentAnteTextView" />
+
+    <ListView
+        android:id="@+id/searchTournamentSearchResultListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/searchTournamentAnteSpinner"
+        android:layout_centerHorizontal="true" >
+    </ListView>
+
+    <ImageButton
+        android:id="@+id/searchTournamentSearchImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_search" />
+    
+</RelativeLayout>

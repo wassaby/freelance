@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.daurenzg.betstars.account.SearchAccountActivity" >
+
+    <EditText
+        android:id="@+id/searchAccountEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/searchAccButton"
+        android:ems="10"
+        android:hint="@string/searchAccountHint" >
+
+        <requestFocus />
+    </EditText>
+
+    <ListView
+        android:id="@+id/searchResultListView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:layout_below="@+id/searchAccountEditText"
+        android:layout_centerHorizontal="true" >
+    </ListView>
+
+    <ImageView
+        android:id="@+id/searchAccButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/searchResultListView1"
+        android:layout_alignRight="@+id/searchResultListView1"
+        android:src="@drawable/ic_search" />
+
+    <ProgressBar
+        android:id="@+id/searchAccountProgressBar"
+        android:layout_width="wrap_content"
+        android:paddingLeft="10dp"
+        android:visibility="invisible"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/searchResultListView1"
+        android:layout_alignRight="@+id/searchResultListView1" />
+
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<document>
+	<merchant cert_id="@cert_id@" name="@merchant_name@">
+		<order order_id="@order_id@" amount="@amount@" currency="@currency@">
+			<department merchant_id="@merchant_id@" amount="@amount@" abonent_id="@abonent_id@" terminal="@terminal@" phone="@phone@"/>
+		</order>
+	</merchant>
+	<merchant_sign type="@althoritm@">@merchant_sign@</merchant_sign>
+</document>

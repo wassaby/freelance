@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" android:paddingBottom="10dp" >
+
+    <ImageView
+        android:id="@+id/chatListLogoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/no_image_available"/>
+
+    <TextView
+        android:id="@+id/chatContactNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/chatListLogoImageView"
+        android:text="Romick"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <CheckBox
+        android:id="@+id/chatListCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:checked="true"
+        android:enabled="false"
+        android:focusable="false"
+        android:text=""
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/chatContactPhoneNumerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chatContactNameTextView"
+        android:layout_toRightOf="@+id/chatListLogoImageView"
+        android:paddingRight="20dp"
+        android:text="+77778350538"/>
+
+    <TextView
+        android:id="@+id/lastMsgTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chatContactPhoneNumerTextView"
+        android:layout_toRightOf="@+id/chatListLogoImageView"
+        android:text="lastMsgTextView" />
+
+    <TextView
+        android:id="@+id/msgDateTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lastMsgTextView"
+        android:layout_below="@+id/lastMsgTextView"
+        android:textColor="@color/main_menu_font_color"
+        android:text="TextView" />
+
+    <ProgressBar
+        android:id="@+id/chatListProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_below="@+id/chatContactNameTextView"
+        android:layout_toRightOf="@+id/chatListCheckBox" />
+
+    <ImageView
+        android:id="@+id/icNewImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/msgDateTextView1"
+        android:visibility="invisible"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_new" />
+
+</RelativeLayout>

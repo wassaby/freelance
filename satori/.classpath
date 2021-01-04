@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="src/test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
+	<classpathentry kind="lib" path="/repository/quartz/jars/quartz-1.6.0.jar" sourcepath="/home/jman/quartz-1.6.0/src/java"/>
+	<classpathentry kind="lib" path="/repository/spring/jars/2.0.2/spring.jar" sourcepath="/home/dimad/src/spring/src"/>
+	<classpathentry kind="lib" path="/repository/log4j/jars/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="/repository/servletapi/jars/servletapi-2.4.jar"/>
+	<classpathentry kind="lib" path="/repository/struts/jars/1.2.6/struts-1.2.jar" sourcepath="/home/dimad/src/apache/struts/struts-1.2.6-src/src/share"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/struts-helper-notify"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/utils-notify"/>
+	<classpathentry kind="lib" path="/repository/commons-httpclient/jars/commons-httpclient-3.0.1.jar" sourcepath="/home/dimad/src/apache/commons/commons-httpclient-3.0.1-src/commons-httpclient-3.0.1/src/java"/>
+	<classpathentry kind="lib" path="/repository/cobra/jars/cobra.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/commons-beans-notify"/>
+	<classpathentry kind="lib" path="/repository/commons-codec/jars/commons-codec-1.3.jar" sourcepath="/home/dimad/src/apache/commons/commons-codec/src/java"/>
+	<classpathentry kind="lib" path="/repository/mysql/jars/mysql-connector-java-5.1.7-bin.jar"/>
+	<classpathentry kind="lib" path="/repository/commons-lang/jars/commons-lang-2.4.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<soapenv:Body>
+		<ns1:AddOffer soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+			xmlns:ns1="urn:amdocs/services">
+			<in0 xsi:type="xsd:unsignedInt">770244772365570048</in0>
+			<in1 xsi:type="tns1:BSubscriberInfo" xmlns:tns1="http://client.oracle.amdocs.realsoft.com">
+				<bittlCode xsi:nil="true" xsi:type="soapenc:string" />
+				<clientCode xsi:type="soapenc:string">18</clientCode>
+				<externalId xsi:nil="true" xsi:type="soapenc:string" />
+				<subscrNumber xsi:type="soapenc:int">25</subscrNumber>
+				<subscriberType xsi:nil="true" xsi:type="soapenc:string" />
+			</in1>
+			<in2 xsi:type="soapenc:Array" soapenc:arrayType="ns2:BSrvAgrInfo[1]"
+				xmlns:ns2="http://client.oracle.amdocs.realsoft.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+				<in2 xsi:type="ns2:BSrvAgrInfo">
+					<dateInfo xsi:type="tns1:BDateInfo">
+						<effectiveDate xsi:type="xsd:dateTime">2013-07-10T11:00:03.000+06:00</effectiveDate>
+						<expirationDate xsi:nil="true" xsi:type="xsd:dateTime" />
+					</dateInfo>
+					<soc xsi:type="soapenc:string">425567</soc>
+				</in2>
+			</in2>
+			<in3 xsi:nil="true" xsi:type="soapenc:Array" soapenc:arrayType="ns2:BLogicalResourceInfo[0]"
+				xmlns:ns3="http://client.oracle.amdocs.realsoft.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" />
+			<in4 xsi:nil="true" xsi:type="soapenc:Array" soapenc:arrayType="ns2:BPhysicalResourceInfo[0]"
+				xmlns:ns3="http://client.oracle.amdocs.realsoft.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" />
+			<in5 xsi:type="soapenc:Array" soapenc:arrayType="ns5:BParameterInfo[5]"
+				xmlns:ns5="http://client.oracle.amdocs.realsoft.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+				<in5 xsi:type="ns5:BParameterInfo">
+					<effectiveDate xsi:nil="true" xsi:type="xsd:dateTime" />
+					<expirationDate xsi:nil="true" xsi:type="xsd:dateTime" />
+					<isChangeable xsi:nil="true" xsi:type="soapenc:byte" />
+					<mandatoryInd xsi:nil="true" xsi:type="soapenc:byte" />
+					<name xsi:type="soapenc:string">Abonent group ID UI</name>
+					<offerCode xsi:type="soapenc:string">425567</offerCode>
+					<offerInstanceId xsi:nil="true" xsi:type="soapenc:int" />
+					<paramInstanceLevel xsi:nil="true" xsi:type="soapenc:byte" />
+					<parameterInstanceId xsi:nil="true" xsi:type="soapenc:int" />
+					<properties xsi:nil="true" xsi:type="soapenc:string" />
+					<services xsi:nil="true" xsi:type="soapenc:string" />
+					<type xsi:nil="true" xsi:type="soapenc:string" />
+					<values xsi:type="soapenc:Array" soapenc:arrayType="soapenc:string[1]"
+						xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+						<values xsi:type="soapenc:string">100271</values>
+					</values>
+				</in5>
+				<in5 xsi:type="ns5:BParameterInfo">
+					<effectiveDate xsi:nil="true" xsi:type="xsd:dateTime" />
+					<expirationDate xsi:nil="true" xsi:type="xsd:dateTime" />
+					<isChangeable xsi:nil="true" xsi:type="soapenc:byte" />
+					<mandatoryInd xsi:nil="true" xsi:type="soapenc:byte" />
+					<name xsi:type="soapenc:string">Abonent group ID rate</name>
+					<offerCode xsi:type="soapenc:string">425567</offerCode>
+					<offerInstanceId xsi:nil="true" xsi:type="soapenc:int" />
+					<paramInstanceLevel xsi:nil="true" xsi:type="soapenc:byte" />
+					<parameterInstanceId xsi:nil="true" xsi:type="soapenc:int" />
+					<properties xsi:nil="true" xsi:type="soapenc:string" />
+					<services xsi:nil="true" xsi:type="soapenc:string" />
+					<type xsi:nil="true" xsi:type="soapenc:string" />
+					<values xsi:type="soapenc:Array" soapenc:arrayType="soapenc:string[1]"
+						xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+						<values xsi:type="soapenc:string">10</values>
+					</values>
+				</in5>
+				<in5 xsi:type="ns5:BParameterInfo">
+					<effectiveDate xsi:nil="true" xsi:type="xsd:dateTime" />
+					<expirationDate xsi:nil="true" xsi:type="xsd:dateTime" />
+					<isChangeable xsi:nil="true" xsi:type="soapenc:byte" />
+					<mandatoryInd xsi:nil="true" xsi:type="soapenc:byte" />
+					<name xsi:type="soapenc:string">Customer town ID</name>
+					<offerCode xsi:type="soapenc:string">425567</offerCode>
+					<offerInstanceId xsi:nil="true" xsi:type="soapenc:int" />
+					<paramInstanceLevel xsi:nil="true" xsi:type="soapenc:byte" />
+					<parameterInstanceId xsi:nil="true" xsi:type="soapenc:int" />
+					<properties xsi:nil="true" xsi:type="soapenc:string" />
+					<services xsi:nil="true" xsi:type="soapenc:string" />
+					<type xsi:nil="true" xsi:type="soapenc:string" />
+					<values xsi:type="soapenc:Array" soapenc:arrayType="soapenc:string[1]"
+						xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+						<values xsi:type="soapenc:string">18069</values>
+					</values>
+				</in5>
+				<in5 xsi:type="ns5:BParameterInfo">
+					<effectiveDate xsi:nil="true" xsi:type="xsd:dateTime" />
+					<expirationDate xsi:nil="true" xsi:type="xsd:dateTime" />
+					<isChangeable xsi:nil="true" xsi:type="soapenc:byte" />
+					<mandatoryInd xsi:nil="true" xsi:type="soapenc:byte" />
+					<name xsi:type="soapenc:string">Personal discount coefficient</name>
+					<offerCode xsi:type="soapenc:string">425567</offerCode>
+					<offerInstanceId xsi:nil="true" xsi:type="soapenc:int" />
+					<paramInstanceLevel xsi:nil="true" xsi:type="soapenc:byte" />
+					<parameterInstanceId xsi:nil="true" xsi:type="soapenc:int" />
+					<properties xsi:nil="true" xsi:type="soapenc:string" />
+					<services xsi:nil="true" xsi:type="soapenc:string" />
+					<type xsi:nil="true" xsi:type="soapenc:string" />
+					<values xsi:type="soapenc:Array" soapenc:arrayType="soapenc:string[1]"
+						xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+						<values xsi:type="soapenc:string">1</values>
+					</values>
+				</in5>
+				<in5 xsi:type="ns5:BParameterInfo">
+					<effectiveDate xsi:nil="true" xsi:type="xsd:dateTime" />
+					<expirationDate xsi:nil="true" xsi:type="xsd:dateTime" />
+					<isChangeable xsi:nil="true" xsi:type="soapenc:byte" />
+					<mandatoryInd xsi:nil="true" xsi:type="soapenc:byte" />
+					<name xsi:type="soapenc:string">Quantity</name>
+					<offerCode xsi:type="soapenc:string">425567</offerCode>
+					<offerInstanceId xsi:nil="true" xsi:type="soapenc:int" />
+					<paramInstanceLevel xsi:nil="true" xsi:type="soapenc:byte" />
+					<parameterInstanceId xsi:nil="true" xsi:type="soapenc:int" />
+					<properties xsi:nil="true" xsi:type="soapenc:string" />
+					<services xsi:nil="true" xsi:type="soapenc:string" />
+					<type xsi:nil="true" xsi:type="soapenc:string" />
+					<values xsi:type="soapenc:Array" soapenc:arrayType="soapenc:string[1]"
+						xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+						<values xsi:type="soapenc:string">1</values>
+					</values>
+				</in5>
+			</in5>
+			<in6 xsi:nil="true" xsi:type="soapenc:Array"
+				soapenc:arrayType="ns2:BEventDistributionDetailsInfo[0]" xmlns:ns3="http://client.oracle.amdocs.realsoft.com"
+				xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" />
+			<in7 xsi:type="soapenc:Array" soapenc:arrayType="ns7:BChargeDistributionDetailsInfo[1]"
+				xmlns:ns7="http://client.oracle.amdocs.realsoft.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+				<in7 xsi:type="ns7:BChargeDistributionDetailsInfo">
+					<soc xsi:type="soapenc:string">425567</soc>
+					<targetPayChannelId xsi:type="soapenc:int">54</targetPayChannelId>
+				</in7>
+			</in7>
+		</ns1:AddOffer>
+	</soapenv:Body>
+</soapenv:Envelope>

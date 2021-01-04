@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:id="@+id/create_tournament_players_count_item">
+
+    <ImageView
+        android:id="@+id/tournamentProfileImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/garner" />
+
+    <TextView
+        android:id="@+id/tournamentProfileIdTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:layout_alignBottom="@+id/tournamentProfileImageView"
+        android:layout_marginBottom="16dp"
+        android:layout_toRightOf="@+id/tournamentProfileImageView"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tournamentProfileNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:layout_above="@+id/tournamentProfileIdTextView"
+        android:layout_alignLeft="@+id/tournamentProfileIdTextView"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/delUsrImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:paddingRight="20dp"
+        android:layout_alignBottom="@+id/tournamentProfileIdTextView"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/del_usr1" />
+    
+</RelativeLayout>

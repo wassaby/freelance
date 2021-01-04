@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+    
+    <definition name="login-page" path="/jsp/login/login.jsp"/>
+    
+    <definition name="common-error" path="/jsp/common/error.jsp"/>
+
+<!-- TEST -->
+	<definition name="test" path="/jsp/test.jsp"/>
+	<definition name="test-map" path="/jsp/test-map.jsp"/>
+    
+<!-- Страницы пользователей -->
+
+	<definition name="user-layout" path="/layouts/user-layout.jsp">
+		<put name="header" value="/layouts/base/base-user/header-user.jsp"/>
+        <put name="body" value=""/>
+    </definition>
+    
+	<definition name="index" extends="user-layout">
+        <put name="body" value="/jsp/user/reports.jsp"/>
+    </definition>
+    
+	<definition name="view-report" path="/layouts/user-layout-report.jsp">
+	    <put name="header" value="/layouts/base/base-user/header-user.jsp"/>
+        <put name="body" value="/jsp/user/view-report.jsp"/>
+        <put name="footer" value="/layouts/base/base-user/footer-user.jsp"/>
+    </definition>
+    
+	<definition name="map" path="/layouts/map-layout.jsp">
+	    <put name="header" value="/layouts/base/base-user/header-user.jsp"/>
+        <put name="body" value="/jsp/user/map.jsp"/>
+        <put name="footer" value="/layouts/base/base-user/map-footer-user.jsp"/>
+    </definition>
+    
+
+<!-- Страницы админа -->
+	<definition name="admin-layout" path="/layouts/admin-layout.jsp">
+		<put name="header" value="/layouts/base/base-admin/header-admin.jsp"/>
+        <put name="body" value=""/>
+        <put name="footer" value=""/>
+    </definition>
+    
+	<definition name="admin-main" extends="admin-layout">
+        <put name="body" value="/jsp/admin/admin-index.jsp"/>
+        <put name="footer" value="/layouts/base/base-admin/footer-admin.jsp"/>
+    </definition>
+    
+	<definition name="admin-view-report" extends="admin-layout">
+        <put name="body" value="/jsp/admin/admin-report.jsp"/>
+        <put name="footer" value="/layouts/base/base-admin/report-footer-admin.jsp"/>
+    </definition>
+    
+	<definition name="admin-list" extends="admin-layout">
+        <put name="body" value="/jsp/admin/admin-list.jsp"/>
+        <put name="footer" value="/layouts/base/base-admin/footer-admin.jsp"/>
+    </definition>
+    
+    
+</tiles-definitions>

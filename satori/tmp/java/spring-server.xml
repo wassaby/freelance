@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" singleton="true" lazy-init="false">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="@billing.database.dburl@"/>
+		<property name="username" value="@billing.database.user@"/>
+		<property name="password" value="@billing.database.password@"/>
+		<property name="validationQuery" value="select 1 from dual"/>
+		<property name="testOnReturn" value="true"/>
+		<property name="testOnBorrow" value="true"/>
+		<property name="testWhileIdle" value="true"/>
+		<property name="maxWait" value="10"/>
+		<property name="initialSize" value="5"/>
+		<property name="maxActive" value="10"/>
+		<property name="maxIdle" value="10"/>
+		<property name="timeBetweenEvictionRunsMillis" value="5000"/>
+		<property name="defaultAutoCommit" value="false"/>		
+	</bean>
+	
+	<bean id="formatter" class="com.realsoft.utils.formatter.FormatterFactory" singleton="true" lazy-init="true" init-method="initialize">
+		<constructor-arg index="0" value="@formatterLocale@"/>
+	</bean>
+	
+	
+</beans>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="WEB Application template" default="deploy" basedir=".">
+	<!-- $Id: build.xml,v 1.1 2014/07/01 11:58:24 dauren_work Exp $ -->
+	<description>WEB Application template</description>
+
+	<!-- set global properties for this build -->
+	<property file="build.properties" />
+
+	<property name="src" location="src" />
+	<property name="java" location="${src}/java" />
+	<property name="test" location="${src}/test" />
+
+	<property name="build" location="build" />
+	<property name="dist" location="${build}/dist" />
+	<property name="webapp" value="${src}/webapp" />
+	<property name="lib" location="../../../repository" />
+	<property name="target.appname" value="${artifact}" />
+	<property name="jar" value="${artifact}.jar" />
+	<property name="deploy.dir" value="${dist}/${target.appname}-webapp" />
+	<property name="struts-helper" location="../../commons/struts-helper" />
+	<property name="struts-helper-webapp"
+	          location="${struts-helper}/src/webapp" />
+
+	<fileset id="thirdparty-libraries" dir="${lib}">
+		<!-- Third party libraries -->
+		<include name="commons-dbcp/jars/commons-dbcp-1.2.1.jar" />
+		<include name="commons-pool/jars/commons-pool-1.2.jar" />
+		<include name="jdbc/jars/jdbc2_0-stdext.jar" />
+		<include name="log4j/jars/log4j-1.2.8.jar" />
+		<include name="mysql/jars/mysql-connector-java-5.1.7-bin.jar" />
+		<include name="spring/jars/2.0.2/spring.jar" />
+		<include name="jta/jars/jta-1.0.1.jar" />
+		<include name="commons-logging/jars/commons-logging-1.0.4.jar" />
+		<include name="commons-lang/jars/commons-lang-2.0.jar" />
+		<include name="commons-digester/jars/commons-digester.jar" />
+		<include name="commons-beanutils/jars/commons-beanutils-1.7.0.jar" />
+		<include name="commons-collections/jars/commons-collections-3.1.jar" />
+		<include name="servletapi/jars/servletapi-2.4.jar" />
+		<include name="quartz/jars/quartz-1.6.0.jar" />
+		<include name="cobra/jars/cobra.jar" />
+		<include name="cobra/jars/js.jar" />
+		<include name="commons-codec/jars/commons-codec-1.3.jar" />
+		<include name="commons-fileupload/jars/commons-fileupload.jar" />
+		<include name="commons-io/jars/commons-io-1.2.jar" />
+		<include name="struts/jars/struts-1.2.jar" />
+		<include name="commons-httpclient/jars/commons-httpclient-3.0.1.jar" />
+		<include name="mail/jars/mail.jar" />
+		<include name="icq/jars/icq.jar" />
+		<include name="commons-mail/jars/commons-email-1.0.jar" />
+		<include name="activation/jars/activation.jar" />
+		<include name="zxing/jars/zxing-core-1.7.jar" />
+		<include name="zxing/jars/zxing-j2se-1.7.jar" />
+	</fileset>
+
+	<fileset id="additional-libraries" dir="${lib}">
+		<!-- Third party libraries -->
+		<include name="servletapi/jars/servletapi-2.4.jar" />
+	</fileset>
+
+	<fileset id="realsoft-libraries" dir="${lib}">
+		<!-- Realsoft libraries -->
+		<include name="commons-beans-notify/jars/commons-beans-notify.jar" />
+		<include name="struts-helper-notify/jars/struts-helper-notify.jar" />
+		<include name="utils-notify/jars/utils-notify.jar" />
+		<include name="utils14-notify/jars/utils14-notify.jar" />
+	</fileset>
+
+    <fileset id="project-libraries" dir="${lib}">
+        <!-- Project libraries -->
+        <include name="${artifact}/jars/${jar}" />
+    </fileset>
+
+	<path id="project-classpath">
+		<fileset refid="thirdparty-libraries" />
+		<fileset refid="additional-libraries" />
+		<fileset refid="realsoft-libraries" />
+		<dirset dir="${build}/classes" />
+	</path>
+
+	<filterset id="main-filter">
+		<filter token="billing.database.dburl" value="${billing.database.dburl}" />
+		<filter token="billing.database.user" value="${billing.database.user}" />
+		<filter token="billing.database.password" value="${billing.database.password}" />
+		<filter token="logger.home" value="${logger.home}" />
+		<filter token="logger" value="${logger}" />
+		<filter token="session-timeout" value="${session-timeout}" />
+		<filter token="caracter.encoding" value="${caracter.encoding}" />
+		<filter token="target.appname" value="${target.appname}" />
+		<filter token="formatterLocale" value="${formatterLocale}" />
+		
+		<filter token="mail-source-name" value="${mail-source-name}" />
+		<filter token="love-mail-source-name" value="${love-mail-source-name}" />
+		<filter token="smtp-encoding" value="${smtp-encoding}" />
+		<filter token="mail-source-address" value="${mail-source-address}" />
+		<filter token="smtp-server" value="${smtp-server}" />
+		<filter token="smtp-user" value="${smtp-user}" />
+		<filter token="smtp-password" value="${smtp-password}" />
+
+		<filter token="icq.login.port" value="${icq.login.port}" />
+		<filter token="icq.login.server" value="${icq.login.server}" />		
+		<filter token="icq.login.user" value="${icq.login.user}" />		
+		<filter token="icq.login.pass" value="${icq.login.pass}" />		
+	</filterset>
+
+	<path id="compile-classpath">
+		<fileset refid="libraries" />
+		<fileset refid="additional-libraries" />
+	</path>
+
+	<target name="init">
+		<tstamp />
+	</target>
+
+	<target name="compile" depends="init" description="compile the source">
+		<echo message="Compiling ${artifact}" />
+		<mkdir dir="${build}/classes" />
+		<javac destdir="${build}/classes" 
+		       optimize="yes"
+		       debug="yes"
+		       deprecation="no"
+		       failonerror="yes">
+			<src path="${java}" />
+			<classpath refid="project-classpath" />
+		</javac>
+		<copy todir="${build}/classes" filtering="yes" overwrite="yes">
+			<fileset dir="${java}">
+				<exclude name="**/*.java" />
+				<exclude name="**/*.properties" />
+				<exclude name="**/*.xml" />
+				<exclude name=".keystore" />
+			</fileset>
+			<filterset refid="main-filter" />
+		</copy>
+		<native2ascii encoding="UTF-8"
+		              src="${java}"
+		              dest="${build}/classes"
+		              includes="**/*.properties" />
+	</target>
+
+	<target name="distr"
+	        depends="compile"
+	        description="distributes archive of compiled files">
+		<echo message="Distributing ${artifact} to ${build}/${target.appname}.jar" />
+		<jar destfile="${build}/${jar}">
+			<fileset dir="${build}/classes" casesensitive="yes">
+				<exclude name="**/*Test.class" />
+				<exclude name="**/*.properties" />
+				<exclude name="**/*.xml" />
+			</fileset>
+		</jar>
+		<mkdir dir="${lib}/${artifact}/jars" />
+		<copy file="${build}/${jar}"
+		      todir="${lib}/${artifact}/jars" />
+	</target>
+
+	<target name="deploy" depends="distr" description="deploys web application">
+		<echo message="Deploying ${artifact}" />
+		<mkdir dir="${deploy.dir}/WEB-INF/classes" />
+		<mkdir dir="${deploy.dir}/WEB-INF/lib" />
+
+		<copy todir="${deploy.dir}" filtering="false" overwrite="yes">
+			<fileset dir="${src}/webapp">
+				<exclude name="**/WEB-INF/classes/**/*" />
+				<exclude name="img/**/*.*" />
+			</fileset>
+			<filterset refid="main-filter" />
+		</copy>
+		<copy todir="${deploy.dir}" overwrite="yes">
+			<fileset dir="${src}/webapp">
+				<include name="images/**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${deploy.dir}/WEB-INF/classes" filtering="true" overwrite="yes">
+			<fileset dir="${java}">
+				<include name="*.xml" />
+			</fileset>
+			<fileset dir="${build}/classes">
+				<include name="**/*.properties" />
+			</fileset>
+			<filterset refid="main-filter" />
+		</copy>
+		<copy todir="${deploy.dir}/WEB-INF/lib" flatten="yes">
+			<fileset refid="realsoft-libraries" />
+			<fileset refid="thirdparty-libraries" />
+			<fileset refid="project-libraries" />
+		</copy>
+
+		<!--copy todir="${deploy.dir}" overwrite="yes" filtering="yes">
+			<fileset dir="${struts-helper-webapp}" />
+		</copy-->
+
+	</target>
+
+	<target name="war" depends="deploy" description="makes war file">
+		<war destfile="${dist}/${target.appname}.war"
+		     webxml="${deploy.dir}/WEB-INF/web.xml">
+			<fileset dir="${deploy.dir}" />
+		</war>
+	</target>
+
+	<target name="deploy-war"
+	        depends="war"
+	        description="deploys war file into tomcat">
+		<echo message="Deploying war ${artifact}" />
+		<copy file="${lib}/${artifact}/jars/${target.appname}.war"
+		      todir="${catalina.home}/webapps" />
+	</target>
+
+	<target name="clean" description="clean up distribution and deployment">
+		<echo message="Cleaning ${artifact}" />
+		<delete includeEmptyDirs="true" failonerror="false">
+			<fileset dir="${build}" />
+		</delete>
+		<delete dir="${lib}/${artifact}" />
+	</target>
+
+	<target name="clean-doc">
+		<echo message="Cleaning documentation for ${artifact}" />
+		<delete dir="${lib}/${artifact}/${doc.directory.name}" />
+	</target>
+
+	<target name="build-doc" depends="clean-doc">
+		<echo message="Building documentation for ${artifact}" />
+		<echo message="src-dir = ${src-dir}" />
+		<mkdir dir="${build}/${doc.directory.name}" />
+		<javadoc encoding="UTF-8"
+		         docencoding="cp1251"
+		         destdir="${build}/${doc.directory.name}"
+		         overview="doc/java-doc/overview-summary.html">
+			<packageset dir="${src-dir}" defaultexcludes="yes">
+				<include name="com/realsoft/kiosk/manager/**" />
+				<exclude name="com/realsoft/kiosk/manager/alive/**" />
+
+				<include name="com/realsoft/utils/db/**" />
+				<include name="com/realsoft/utils/nativelib/**" />
+				<include name="com/realsoft/utils/resources/**" />
+				<include name="com/realsoft/utils/resources/swt/**" />
+				<include name="com/realsoft/utils/servlet/**" />
+				<include name="com/realsoft/utils/spring/**" />
+				<include name="com/realsoft/utils/system/**" />
+
+				<include name="com/realsoft/commons/utils14/hash/**" />
+				<include name="com/realsoft/commons/utils14/log4j/**" />
+
+				<include name="com/realsoft/struts/helper/**" />
+				<exclude name="com/realsoft/struts/helper/success/**/*" />
+
+				<include name="com/realsoft/kiosk/dao/**" />
+
+				<include name="com/realsoft/kiosk/**" />
+				<exclude name="com/realsoft/kiosk/wait" />
+
+				<include name="com/realsoft/commons/control/**" />
+
+				<include name="com/realsoft/commons/beans/abonent/**" />
+				<include name="com/realsoft/commons/beans/control/**" />
+				<include name="com/realsoft/commons/beans/epay/**" />
+				<include name="com/realsoft/commons/beans/httpclient/**" />
+				<include name="com/realsoft/commons/beans/keystore/**" />
+				<include name="com/realsoft/commons/beans/payment/**" />
+				<include name="com/realsoft/commons/beans/persist/**" />
+				<include name="com/realsoft/commons/beans/registration/**" />
+				<include name="com/realsoft/commons/beans/request/**" />
+			</packageset>
+			<header>
+				<![CDATA[<h1>TOO Realsoft</h1>]]></header>
+		<bottom>
+			<![CDATA[<i>Copyright &#169; 2006 Realsoft LTD. All Rights Reserved.</i>]]></bottom>
+	<group title="Пакет с классами для получения расшифровок"
+	       packages="com.realsoft.kiosk.abonent.detail.charge" />
+	<group title="Пакет с классами для изменения личных настроек абонента"
+	       packages="com.realsoft.kiosk.abonent.edit" />
+	<group title="Пакет с классами для регистрации заявок"
+	       packages="com.realsoft.kiosk.abonent.request" />
+	<group title="Пакет с классами для регистрации заявок на ДВО"
+	       packages="com.realsoft.kiosk.abonent.request.additional" />
+	<group title="Пакет с классами для регистрации заявок на установку Megaline"
+	       packages="com.realsoft.kiosk.abonent.request.idsl" />
+	<group title="Пакет с классами для регистрации заявок на установку ISDN"
+	       packages="com.realsoft.kiosk.abonent.request.isdn" />
+	<group title="Пакет с классами для регистрации email"
+	       packages="com.realsoft.kiosk.abonent.request.mail" />
+	<group title="Пакет с классами для регистрации заявок на установку телефона"
+	       packages="com.realsoft.kiosk.abonent.request.terminal" />
+	<group title="Пакет с классами для получения информации об абоненте"
+	       packages="com.realsoft.kiosk.abonent.status" />
+	<group title="Пакет с классами для проведения платежей"
+	       packages="com.realsoft.kiosk.epay" />
+	<group title="Пакет с классами для удаленного взаимодействия"
+	       packages="com.realsoft.kiosk.jmx" />
+	<group title="Пакет с классами для смены текущего языка системы"
+	       packages="com.realsoft.kiosk.language" />
+	<group title="Пакет с классами для получения состояний киосков"
+	       packages="com.realsoft.kiosk.list" />
+	<group title="Пакет с классами для идентификации пользователей"
+	       packages="com.realsoft.kiosk.login" />
+	<group title="Пакет с классами для регистрации email"
+	       packages="com.realsoft.kiosk.mail" />
+	<group title="Пакет с классами подсистемы мониторинга"
+	       packages="com.realsoft.kiosk.manager" />
+	<group title="Пакет с классами подсистемы мониторинга"
+	       packages="com.realsoft.kiosk.manager.actions" />
+	<group title="Корневой пакет с классами для обработки действий пользователя"
+	       packages="com.realsoft.kiosk.abonent" />
+	<group title="Пакет с классами для добавления/удаления/редактирования email'а(ов) пользователя"
+	       packages="com.realsoft.kiosk.mail" />
+	<group title="Действия, выполняемые подсистемой мониторинга для проверки узлов"
+	       packages="com.realsoft.kiosk.manager.actions" />
+	<group title="Пакет с классами для автоматического внедрения модулей подсистемы мониторинга"
+	       packages="com.realsoft.kiosk.manager.deploy" />
+	<group title="Обработчики обратных вызовов"
+	       packages="com.realsoft.kiosk.manager.handler" />
+	<group title="Авторизация узлов подсистемы мониторинга"
+	       packages="com.realsoft.kiosk.manager.login" />
+	<group title="Мониторинг платежей"
+	       packages="com.realsoft.kiosk.manager.payment" />
+	<group title="Мониторинг принтеров киосков"
+	       packages="com.realsoft.kiosk.manager.printer" />
+	<group title="Реестр подключенных узлов подсистемы"
+	       packages="com.realsoft.kiosk.manager.registry" />
+	<group title="Работа с деревом состояний устройств подсистемы мониторинга"
+	       packages="com.realsoft.kiosk.manager.tree" />
+	<group title="Проверка web-серверов"
+	       packages="com.realsoft.kiosk.manager.webserver" />
+	<group title="Общие, часто выполняемые операции"
+	       packages="com.realsoft.kiosk.utils" />
+	<group title="Классы для смены языка WEB-приложений"
+	       packages="com.realsoft.struts.helper.language" />
+	<group title="Классы для идентификации пользователей WEB-приложений"
+	       packages="com.realsoft.struts.helper.login" />
+	<group title="Классы для завершения сессий пользователей WEB-приложений"
+	       packages="com.realsoft.struts.helper.logout" />
+	<group title="Классы для принудительного завершения сессий пользователей WEB-приложений"
+	       packages="com.realsoft.struts.helper.manager" />
+	<group title="JSP-тэги" packages="com.realsoft.struts.helper.tags" />
+	<group title="SWING-компоненты"
+	       packages="com.realsoft.utils.resources.swing" />
+	<group title="SWT-компоненты" packages="com.realsoft.utils.resources.swt" />
+</javadoc>
+<echo message="zip name = ${build}/${doc.zip}" />
+<zip destfile="${build}/${doc.zip}">
+	<fileset dir="${build}/${doc.directory.name}" />
+</zip>
+<copy file="${build}/${doc.zip}" todir="${lib}/${artifact}" />
+</target>
+
+
+</project>

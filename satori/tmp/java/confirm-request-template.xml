@@ -1,0 +1,1 @@
+<document><merchant id="@merchant_id@"><command type="@command_type@"/><payment reference="@reference@" approval_code="@approval_code@" orderid="@order_id@" amount="@amount@" currency_code="@currency@"/><reason>@reason@</reason></merchant><merchant_sign type="@althoritm@" cert_id="@cert_id@">@merchant_sign@</merchant_sign></document>

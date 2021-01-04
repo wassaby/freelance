@@ -1,0 +1,14 @@
+artifact=web-app-template
+
+logger.home=/var/log/web-app-template
+logger=WEB-INF/log4j.xml
+
+formatterLocale=ru
+
+session-timeout=1
+
+caracter.encoding=utf-8
+
+billing.database.dburl=jdbc:oracle:thin:@10.241.8.12:1521:orcl
+billing.database.user=webdealer
+billing.database.password=web123dealer
